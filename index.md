@@ -54,3 +54,45 @@ Hi! My name is [Your Full Name].
 > Feel free to reach out if you'd like to collaborate or learn more about our work.
 
 <p style="color: #2A7DB1;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #2A7DB1; text-decoration: underline;">Socials</a></p>
+
+<style>
+  body {
+    color: white;
+    transition: background-color 0.5s ease;
+    animation: colorChange 10s infinite;
+  }
+  
+  @keyframes colorChange {
+    0% { background-color: #FF5733; }
+    10% { background-color: #33FF57; }
+    20% { background-color: #3357FF; }
+    30% { background-color: #F333FF; }
+    40% { background-color: #FF33F3; }
+    50% { background-color: #33FFF5; }
+    60% { background-color: #F5FF33; }
+    70% { background-color: #FF8C33; }
+    80% { background-color: #8C33FF; }
+    90% { background-color: #33FF8C; }
+    100% { background-color: #FF5733; }
+  }
+</style>
+
+<script>
+  // More dynamic color changing with JavaScript
+  const colors = [
+    '#FF5733', '#33FF57', '#3357FF', '#F333FF', 
+    '#FF33F3', '#33FFF5', '#F5FF33', '#FF8C33',
+    '#8C33FF', '#33FF8C', '#FF3361', '#61FF33',
+    '#3361FF', '#FF33A8', '#A833FF'
+  ];
+  
+  let currentIndex = 0;
+  
+  function changeBackground() {
+    document.body.style.backgroundColor = colors[currentIndex];
+    currentIndex = (currentIndex + 1) % colors.length;
+  }
+  
+  // Change color every 500ms (0.5 seconds)
+  setInterval(changeBackground, 500);
+</script>
