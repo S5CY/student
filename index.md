@@ -4,117 +4,6 @@ title: I'm [Your Full Name]
 hide: true
 ---
 
-<style>
-  body {
-    color: white;
-    transition: all 0.5s ease;
-    animation: colorChange 10s infinite;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    overflow-x: hidden;
-  }
-  
-  @keyframes colorChange {
-    0% { background-color: #FF5733; }
-    10% { background-color: #33FF57; }
-    20% { background-color: #3357FF; }
-    30% { background-color: #F333FF; }
-    40% { background-color: #FF33F3; }
-    50% { background-color: #33FFF5; }
-    60% { background-color: #F5FF33; }
-    70% { background-color: #FF8C33; }
-    80% { background-color: #8C33FF; }
-    90% { background-color: #33FF8C; }
-    100% { background-color: #FF5733; }
-  }
-
-  .floating {
-    position: fixed;
-    animation: float 10s infinite ease-in-out;
-    z-index: -1;
-    opacity: 0.7;
-    filter: blur(1px);
-  }
-
-  @keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(50vw, 25vh) rotate(90deg); }
-    50% { transform: translate(25vw, 50vh) rotate(180deg); }
-    75% { transform: translate(75vw, 25vh) rotate(270deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
-  }
-
-  .emoji-rain {
-    position: fixed;
-    top: -50px;
-    animation: rain linear infinite;
-    z-index: -1;
-  }
-
-  @keyframes rain {
-    to { transform: translateY(100vh); }
-  }
-
-  .matrix-code {
-    position: fixed;
-    bottom: 0;
-    color: lime;
-    font-family: monospace;
-    z-index: -1;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    animation: matrix 5s linear infinite;
-  }
-
-  @keyframes matrix {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(100%); }
-  }
-
-  .pulsing-text {
-    animation: pulse 1s infinite alternate;
-    text-shadow: 0 0 10px currentColor;
-  }
-
-  @keyframes pulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
-  }
-</style>
-
-<!-- Abstract floating shapes -->
-<div class="floating" style="top:20%; left:10%; font-size:50px;">🦄</div>
-<div class="floating" style="top:70%; left:80%; font-size:70px;">🍕</div>
-<div class="floating" style="top:40%; left:60%; font-size:40px;">👽</div>
-<div class="floating" style="top:10%; left:50%; font-size:60px;">🤖</div>
-
-<!-- Emoji rain -->
-<script>
-  function createEmojiRain() {
-    const emojis = ['💻', '🚀', '🌈', '🎮', '🍔', '🐱', '👾', '🦕'];
-    const emoji = document.createElement('div');
-    emoji.className = 'emoji-rain';
-    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    emoji.style.left = Math.random() * 100 + 'vw';
-    emoji.style.fontSize = (Math.random() * 20 + 10) + 'px';
-    emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
-    document.body.appendChild(emoji);
-    
-    setTimeout(() => {
-      emoji.remove();
-    }, 5000);
-  }
-  
-  setInterval(createEmojiRain, 300);
-</script>
-
-<!-- Matrix code effect -->
-<div class="matrix-code" style="left: 5%;">01010101010101010101010101010101</div>
-<div class="matrix-code" style="left: 10%;">10101010101010101010101010101010</div>
-<div class="matrix-code" style="right: 5%;">01010101010101010101010101010101</div>
-<div class="matrix-code" style="right: 10%;">10101010101010101010101010101010</div>
-
-<!-- Main content with pulsing effect -->
-<div class="pulsing-text">
 ### Me and Team
 
 Hi! My name is [Your Full Name].
@@ -165,10 +54,31 @@ Hi! My name is [Your Full Name].
 > Feel free to reach out if you'd like to collaborate or learn more about our work.
 
 <p style="color: #2A7DB1;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #2A7DB1; text-decoration: underline;">Socials</a></p>
-</div>
+
+<style>
+  body {
+    color: white;
+    transition: background-color 0.5s ease;
+    animation: colorChange 10s infinite;
+  }
+  
+  @keyframes colorChange {
+    0% { background-color: #FF5733; }
+    10% { background-color: #33FF57; }
+    20% { background-color: #3357FF; }
+    30% { background-color: #F333FF; }
+    40% { background-color: #FF33F3; }
+    50% { background-color: #33FFF5; }
+    60% { background-color: #F5FF33; }
+    70% { background-color: #FF8C33; }
+    80% { background-color: #8C33FF; }
+    90% { background-color: #33FF8C; }
+    100% { background-color: #FF5733; }
+  }
+</style>
 
 <script>
-  // Dynamic background color changing
+  // More dynamic color changing with JavaScript
   const colors = [
     '#FF5733', '#33FF57', '#3357FF', '#F333FF', 
     '#FF33F3', '#33FFF5', '#F5FF33', '#FF8C33',
@@ -183,20 +93,6 @@ Hi! My name is [Your Full Name].
     currentIndex = (currentIndex + 1) % colors.length;
   }
   
+  // Change color every 500ms (0.5 seconds)
   setInterval(changeBackground, 500);
-
-  // Random mouse trail effect
-  document.addEventListener('mousemove', function(e) {
-    const trail = document.createElement('div');
-    trail.className = 'floating';
-    trail.style.left = e.pageX + 'px';
-    trail.style.top = e.pageY + 'px';
-    trail.style.fontSize = '20px';
-    trail.textContent = ['✨', '🌟', '⚡', '💫'][Math.floor(Math.random() * 4)];
-    document.body.appendChild(trail);
-    
-    setTimeout(() => {
-      trail.remove();
-    }, 1000);
-  });
 </script>
