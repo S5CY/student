@@ -54,3 +54,20 @@ Hi! My name is [Your Full Name].
 > Feel free to reach out if you'd like to collaborate or learn more about our work.
 
 <p style="color: #2A7DB1;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #2A7DB1; text-decoration: underline;">Socials</a></p>
+
+<style>
+  body {
+    color: white;
+    transition: background-color 0.5s ease;
+  }
+</style>
+
+<script>
+  const colors = ['#ff4b5c', '#56cfe1', '#ffbe0b', '#8338ec', '#3a86ff', '#06d6a0', '#ef476f'];
+  let i = 0;
+
+  setInterval(() => {
+    document.body.style.backgroundColor = colors[i % colors.length];
+    i++;
+  }, 500); // Change every 0.5 seconds
+</script>
