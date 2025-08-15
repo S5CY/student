@@ -54,10 +54,3 @@ Hi! My name is [Your Full Name].
 > Feel free to reach out if you'd like to collaborate or learn more about our work.
 
 <p style="color: #2A7DB1;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #2A7DB1; text-decoration: underline;">Socials</a></p>
-
-<style>
-  body {
-    color: white;
-    transition: background-color 0.5s ease;
-  }
-</style>
