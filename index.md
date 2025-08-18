@@ -5,33 +5,28 @@ hide: true
 ---
 
 <style>
-  /* 原有样式 */
+  /* Pastel color animation */
   body {
-    color: white;
-    transition: background-color 0.5s ease;
-    animation: colorChange 10s infinite;
+    color: #555;
+    transition: background-color 1s ease;
+    animation: colorChange 15s infinite;
   }
   
   @keyframes colorChange {
-    0% { background-color: #FF5733; }
-    10% { background-color: #33FF57; }
-    20% { background-color: #3357FF; }
-    30% { background-color: #F333FF; }
-    40% { background-color: #FF33F3; }
-    50% { background-color: #33FFF5; }
-    60% { background-color: #F5FF33; }
-    70% { background-color: #FF8C33; }
-    80% { background-color: #8C33FF; }
-    90% { background-color: #33FF8C; }
-    100% { background-color: #FF5733; }
+    0% { background-color: #FFD1DC; } /* Pastel pink */
+    20% { background-color: #B5EAD7; } /* Pastel mint */
+    40% { background-color: #C7CEEA; } /* Pastel lavender */
+    60% { background-color: #E2F0CB; } /* Pastel green */
+    80% { background-color: #FFDAC1; } /* Pastel peach */
+    100% { background-color: #FFD1DC; }
   }
 
-  /* 星星样式 */
+  /* 星星样式 - updated for pastel background */
   .star {
     position: fixed;
     width: 3px;
     height: 3px;
-    background: white;
+    background: rgba(100,100,100,0.6);
     border-radius: 50%;
     pointer-events: none;
     z-index: 999;
@@ -47,6 +42,53 @@ hide: true
   @keyframes float {
     0% { transform: translate(0, 0) rotate(0deg); }
     100% { transform: translate(100vw, 100vh) rotate(360deg); }
+  }
+
+  /* Updated table styling with pastel colors */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  th {
+    background-color: #A2D2FF; /* Pastel blue */
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  tr:hover {
+    background-color: rgba(178, 232, 215, 0.3); /* Light pastel mint */
+  }
+  
+  /* Updated button colors */
+  .button.small {
+    background-color: #CDB4DB !important; /* Pastel purple */
+    border: none;
+    color: white !important;
+  }
+  
+  /* Updated link colors */
+  a {
+    color: #6b4bd3;
+  }
+  
+  /* Updated contact section */
+  #contact {
+    background: rgba(255,255,255,0.7);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
   }
 </style>
 
@@ -80,23 +122,22 @@ hide: true
   // 页面加载后创建星星
   window.addEventListener('load', createStars);
 
-  // 原有JavaScript
-  const colors = [
-    '#FF5733', '#33FF57', '#3357FF', '#F333FF', 
-    '#FF33F3', '#33FFF5', '#F5FF33', '#FF8C33',
-    '#8C33FF', '#33FF8C', '#FF3361', '#61FF33',
-    '#3361FF', '#FF33A8', '#A833FF'
+  // Pastel background colors cycling
+  const pastelColors = [
+    '#FFD1DC', '#B5EAD7', '#C7CEEA', 
+    '#E2F0CB', '#FFDAC1', '#A2D2FF',
+    '#CDB4DB', '#FFC8DD', '#BDE0FE'
   ];
   
   let currentIndex = 0;
   
   function changeBackground() {
-    document.body.style.backgroundColor = colors[currentIndex];
-    currentIndex = (currentIndex + 1) % colors.length;
+    document.body.style.backgroundColor = pastelColors[currentIndex];
+    currentIndex = (currentIndex + 1) % pastelColors.length;
   }
   
-  // Change color every 500ms (0.5 seconds)
-  setInterval(changeBackground, 500);
+  // Change color every 3 seconds (slower transition)
+  setInterval(changeBackground, 3000);
 </script>
 
 ### Me and Team
@@ -123,29 +164,31 @@ Hi! My name is [Your Full Name].
 <a href="https://open-coding-society.github.io/student">
     <img src="https://img.shields.io/badge/GitHub%20Pages-327FC7?logo=github&logoColor=white" alt="GitHub Pages">
 </a>
-<a href="https://kasm.opencodingsociety.com/" class="button small" style="background-color: #6b4bd3ff">
+<a href="https://kasm.opencodingsociety.com/" class="button small">
     KASM
 </a>
-<a href="https://vscode.dev/" class="button small" style="background-color: #4baad3ff">
-    <span style="color: #3e77ceff">VSCODE</span>
+<a href="https://vscode.dev/" class="button small">
+    VSCODE
 </a>
 
 <br>
 
 ### Class Progress
 
-<a href="{{site.baseurl}}/snake" class="button small" style="background-color: #6b4bd3ff">
+<a href="{{site.baseurl}}/snake" class="button small">
     Snake Game
 </a>
-<a href="{{site.baseurl}}/turtle" class="button small" style="background-color: #2A7DB1">
-    <span style="color: #000000">Turtle</span>
+<a href="{{site.baseurl}}/turtle" class="button small">
+    Turtle
 </a>
 
 <br>
 
 <!-- Contact Section -->
+<div id="contact">
 ### Get in Touch
 
 > Feel free to reach out if you'd like to collaborate or learn more about our work.
 
-<p style="color: #2A7DB1;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #2A7DB1; text-decoration: underline;">Socials</a></p>
+<p>Open Coding Society: <a href="https://opencodingsociety.com">Socials</a></p>
+</div>
