@@ -5,21 +5,21 @@ hide: true
 ---
 
 <style>
-  /* Pastel color animation with dark text */
+  /* Soft pastel color animation with light text */
   body {
-    color: #333;
+    color: #555;
     transition: background-color 1s ease;
     animation: colorChange 15s infinite;
     line-height: 1.6;
   }
   
   @keyframes colorChange {
-    0% { background-color: #FFD1DC; }
-    20% { background-color: #B5EAD7; }
-    40% { background-color: #C7CEEA; }
-    60% { background-color: #E2F0CB; }
-    80% { background-color: #FFDAC1; }
-    100% { background-color: #FFD1DC; }
+    0% { background-color: #FFF0F5; } /* Lavender blush */
+    20% { background-color: #F0FFF0; } /* Honeydew */
+    40% { background-color: #F0F8FF; } /* Alice blue */
+    60% { background-color: #FFF8F0; } /* Floral white */
+    80% { background-color: #F5F0FF; } /* Very pale violet */
+    100% { background-color: #FFF0F5; }
   }
 
   /* Star styles */
@@ -27,7 +27,7 @@ hide: true
     position: fixed;
     width: 3px;
     height: 3px;
-    background: rgba(80,80,80,0.8);
+    background: rgba(200,200,255,0.8);
     border-radius: 50%;
     pointer-events: none;
     z-index: 999;
@@ -46,25 +46,25 @@ hide: true
 
   /* Text styles */
   h1, h2, h3, h4, h5, h6 {
-    color: #222 !important;
-    font-weight: 600;
+    color: #6A5ACD !important; /* Soft slate blue */
+    font-weight: 500;
   }
   
-  /* Table styles - updated with beautiful colors */
+  /* Table styles - light color scheme */
   table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    background: rgba(255,255,255,0.97);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 10px rgba(200,200,255,0.2);
     border-radius: 12px;
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   
   th {
-    background: linear-gradient(135deg, #8A6BBE, #6b4bd3);
-    color: white !important;
+    background: linear-gradient(135deg, #B5C7EA, #C7B5EA); /* Soft blue to lavender */
+    color: #FFF !important;
     padding: 14px;
     text-align: left;
     font-weight: 500;
@@ -75,8 +75,8 @@ hide: true
   
   td {
     padding: 12px 14px;
-    border-bottom: 1px solid #f0f0f0;
-    color: #333 !important;
+    border-bottom: 1px solid #F0F0FF;
+    color: #666 !important;
     transition: all 0.2s ease;
   }
   
@@ -85,19 +85,19 @@ hide: true
   }
   
   tr:hover td {
-    background-color: rgba(138, 107, 190, 0.08);
-    color: #222 !important;
+    background-color: rgba(200,200,255,0.05);
+    color: #6A5ACD !important;
   }
   
   /* Button styles */
   .button.small {
-    background: linear-gradient(135deg, #8A6BBE, #6b4bd3) !important;
+    background: linear-gradient(135deg, #B5C7EA, #C7B5EA) !important;
     border: none;
     color: white !important;
     font-weight: 500;
     padding: 10px 20px;
     border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(107, 75, 211, 0.2);
+    box-shadow: 0 2px 8px rgba(183, 172, 234, 0.3);
     transition: all 0.3s ease;
     display: inline-block;
     margin: 0.2rem;
@@ -105,37 +105,37 @@ hide: true
   }
   
   .button.small:hover {
-    background: linear-gradient(135deg, #7A5BAE, #5a3dba) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(107, 75, 211, 0.3);
+    background: linear-gradient(135deg, #A5B7DA, #B7A5DA) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(183, 172, 234, 0.4);
     text-decoration: none;
   }
   
   /* Link styles */
   a {
-    color: #6b4bd3 !important;
+    color: #8A7CEC !important; /* Soft periwinkle */
     font-weight: 500;
     transition: all 0.2s ease;
     text-decoration: none;
   }
   
   a:hover {
-    color: #4a2d9e !important;
+    color: #6A5ACD !important;
     text-decoration: underline;
   }
   
   /* Contact section */
   #contact {
-    background: rgba(255,255,255,0.97);
+    background: rgba(255,255,255,0.95);
     padding: 1.8rem;
     border-radius: 12px;
     margin-top: 2.5rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(200,200,255,0.2);
+    border: 1px solid rgba(220,220,255,0.5);
   }
   
   #contact p {
-    color: #333 !important;
+    color: #666 !important;
     margin-bottom: 0.8rem;
   }
   
@@ -146,11 +146,12 @@ hide: true
     padding: 2px 6px;
     display: inline-block;
     margin: 0.2rem;
+    background-color: rgba(200,200,255,0.2);
   }
   
   .badge:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(200,200,255,0.3);
   }
 </style>
 
@@ -184,9 +185,9 @@ hide: true
 
   // Background colors cycling
   const pastelColors = [
-    '#FFD1DC', '#B5EAD7', '#C7CEEA', 
-    '#E2F0CB', '#FFDAC1', '#A2D2FF',
-    '#CDB4DB', '#FFC8DD', '#BDE0FE'
+    '#FFF0F5', '#F0FFF0', '#F0F8FF', 
+    '#FFF8F0', '#F5F0FF', '#E6F9FF',
+    '#F0F5FF', '#FFF5F0', '#F8F0FF'
   ];
   
   let currentIndex = 0;
