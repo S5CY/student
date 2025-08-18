@@ -50,7 +50,7 @@ hide: true
     font-weight: 600;
   }
   
-  /* Table styles - updated colors */
+  /* Table styles - updated with beautiful colors */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -59,6 +59,7 @@ hide: true
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     border-radius: 12px;
     overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   
   th {
@@ -68,19 +69,27 @@ hide: true
     text-align: left;
     font-weight: 500;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.85em;
   }
   
   td {
     padding: 12px 14px;
     border-bottom: 1px solid #f0f0f0;
     color: #333 !important;
+    transition: all 0.2s ease;
   }
   
-  tr:hover {
+  tr:last-child td {
+    border-bottom: none;
+  }
+  
+  tr:hover td {
     background-color: rgba(138, 107, 190, 0.08);
+    color: #222 !important;
   }
   
-  /* Button styles - updated gradient */
+  /* Button styles */
   .button.small {
     background: linear-gradient(135deg, #8A6BBE, #6b4bd3) !important;
     border: none;
@@ -90,12 +99,16 @@ hide: true
     border-radius: 25px;
     box-shadow: 0 4px 8px rgba(107, 75, 211, 0.2);
     transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0.2rem;
+    text-decoration: none;
   }
   
   .button.small:hover {
     background: linear-gradient(135deg, #7A5BAE, #5a3dba) !important;
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(107, 75, 211, 0.3);
+    text-decoration: none;
   }
   
   /* Link styles */
@@ -103,6 +116,7 @@ hide: true
     color: #6b4bd3 !important;
     font-weight: 500;
     transition: all 0.2s ease;
+    text-decoration: none;
   }
   
   a:hover {
@@ -130,6 +144,8 @@ hide: true
     transition: all 0.3s ease;
     border-radius: 6px;
     padding: 2px 6px;
+    display: inline-block;
+    margin: 0.2rem;
   }
   
   .badge:hover {
