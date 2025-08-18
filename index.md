@@ -7,18 +7,18 @@ hide: true
 <style>
   /* Pastel color animation with dark text */
   body {
-    color: #333; /* Dark gray text */
+    color: #333;
     transition: background-color 1s ease;
     animation: colorChange 15s infinite;
     line-height: 1.6;
   }
   
   @keyframes colorChange {
-    0% { background-color: #FFD1DC; } /* Pastel pink */
-    20% { background-color: #B5EAD7; } /* Pastel mint */
-    40% { background-color: #C7CEEA; } /* Pastel lavender */
-    60% { background-color: #E2F0CB; } /* Pastel green */
-    80% { background-color: #FFDAC1; } /* Pastel peach */
+    0% { background-color: #FFD1DC; }
+    20% { background-color: #B5EAD7; }
+    40% { background-color: #C7CEEA; }
+    60% { background-color: #E2F0CB; }
+    80% { background-color: #FFDAC1; }
     100% { background-color: #FFD1DC; }
   }
 
@@ -44,61 +44,65 @@ hide: true
     100% { transform: translate(100vw, 100vh) rotate(360deg); }
   }
 
-  /* Text styles with dark colors */
+  /* Text styles */
   h1, h2, h3, h4, h5, h6 {
     color: #222 !important;
     font-weight: 600;
   }
   
-  /* Table styles */
+  /* Table styles - updated colors */
   table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.97);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
   }
   
   th {
-    background-color: #6b4bd3;
+    background: linear-gradient(135deg, #8A6BBE, #6b4bd3);
     color: white !important;
-    padding: 12px;
+    padding: 14px;
     text-align: left;
     font-weight: 500;
+    letter-spacing: 0.5px;
   }
   
   td {
-    padding: 10px 12px;
-    border-bottom: 1px solid #eee;
+    padding: 12px 14px;
+    border-bottom: 1px solid #f0f0f0;
     color: #333 !important;
   }
   
   tr:hover {
-    background-color: rgba(107, 75, 211, 0.08);
+    background-color: rgba(138, 107, 190, 0.08);
   }
   
-  /* Button styles */
+  /* Button styles - updated gradient */
   .button.small {
-    background-color: #6b4bd3 !important;
+    background: linear-gradient(135deg, #8A6BBE, #6b4bd3) !important;
     border: none;
     color: white !important;
     font-weight: 500;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(107, 75, 211, 0.2);
+    transition: all 0.3s ease;
   }
   
   .button.small:hover {
-    background-color: #5a3dba !important;
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #7A5BAE, #5a3dba) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(107, 75, 211, 0.3);
   }
   
   /* Link styles */
   a {
-    color: #5a3dba !important;
+    color: #6b4bd3 !important;
     font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s;
+    transition: all 0.2s ease;
   }
   
   a:hover {
@@ -108,21 +112,29 @@ hide: true
   
   /* Contact section */
   #contact {
-    background: rgba(255,255,255,0.95);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-top: 2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.97);
+    padding: 1.8rem;
+    border-radius: 12px;
+    margin-top: 2.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
   }
   
   #contact p {
     color: #333 !important;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
   }
   
   /* Badge styles */
   .badge {
-    filter: brightness(0.95);
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    padding: 2px 6px;
+  }
+  
+  .badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
 </style>
 
@@ -143,17 +155,15 @@ hide: true
       star.style.width = size + 'px';
       star.style.height = size + 'px';
       
-      // Random animation duration
+      // Random animation
       star.style.animationDuration = (Math.random() * 10 + 5) + 's';
-      
-      // Random delay
       star.style.animationDelay = Math.random() * 5 + 's';
       
       document.body.appendChild(star);
     }
   }
 
-  // Create stars on page load
+  // Initialize stars
   window.addEventListener('load', createStars);
 
   // Background colors cycling
@@ -170,7 +180,6 @@ hide: true
     currentIndex = (currentIndex + 1) % pastelColors.length;
   }
   
-  // Change color every 3 seconds
   setInterval(changeBackground, 3000);
 </script>
 
