@@ -5,9 +5,9 @@ hide: true
 ---
 
 <style>
-  /* Pastel color animation with better contrast */
+  /* Pastel color animation with dark text */
   body {
-    color: #444; /* 深灰色文字，在浅色背景上更清晰 */
+    color: #333; /* Dark gray text */
     transition: background-color 1s ease;
     animation: colorChange 15s infinite;
     line-height: 1.6;
@@ -22,12 +22,12 @@ hide: true
     100% { background-color: #FFD1DC; }
   }
 
-  /* 星星样式 - 调整为更显眼的深色 */
+  /* Star styles */
   .star {
     position: fixed;
     width: 3px;
     height: 3px;
-    background: rgba(80,80,80,0.8); /* 深灰色星星 */
+    background: rgba(80,80,80,0.8);
     border-radius: 50%;
     pointer-events: none;
     z-index: 999;
@@ -44,26 +44,26 @@ hide: true
     100% { transform: translate(100vw, 100vh) rotate(360deg); }
   }
 
-  /* 标题样式 - 增加对比度 */
+  /* Text styles with dark colors */
   h1, h2, h3, h4, h5, h6 {
-    color: #333; /* 更深的文字颜色 */
+    color: #222 !important;
     font-weight: 600;
   }
   
-  /* 表格样式 - 提高可读性 */
+  /* Table styles */
   table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    background: rgba(255,255,255,0.9); /* 更白的背景 */
+    background: rgba(255,255,255,0.95);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     border-radius: 10px;
     overflow: hidden;
   }
   
   th {
-    background-color: #8A6BBE; /* 更深的紫色 */
-    color: white !important; /* 确保白色文字 */
+    background-color: #6b4bd3;
+    color: white !important;
     padding: 12px;
     text-align: left;
     font-weight: 500;
@@ -72,16 +72,16 @@ hide: true
   td {
     padding: 10px 12px;
     border-bottom: 1px solid #eee;
-    color: #444; /* 深灰色文字 */
+    color: #333 !important;
   }
   
   tr:hover {
-    background-color: rgba(138, 107, 190, 0.1); /* 浅紫色悬停效果 */
+    background-color: rgba(107, 75, 211, 0.08);
   }
   
-  /* 按钮样式 - 提高对比度 */
+  /* Button styles */
   .button.small {
-    background-color: #8A6BBE !important; /* 更深的紫色 */
+    background-color: #6b4bd3 !important;
     border: none;
     color: white !important;
     font-weight: 500;
@@ -89,26 +89,26 @@ hide: true
   }
   
   .button.small:hover {
-    background-color: #6b4bd3 !important;
+    background-color: #5a3dba !important;
     transform: translateY(-2px);
   }
   
-  /* 链接样式 */
+  /* Link styles */
   a {
-    color: #6b4bd3; /* 深紫色链接 */
+    color: #5a3dba !important;
     font-weight: 500;
     text-decoration: none;
     transition: color 0.2s;
   }
   
   a:hover {
-    color: #4a2d9e;
+    color: #4a2d9e !important;
     text-decoration: underline;
   }
   
-  /* 联系区域 - 提高可读性 */
+  /* Contact section */
   #contact {
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.95);
     padding: 1.5rem;
     border-radius: 10px;
     margin-top: 2rem;
@@ -116,47 +116,47 @@ hide: true
   }
   
   #contact p {
-    color: #444;
+    color: #333 !important;
     margin-bottom: 0.5rem;
   }
   
-  /* 徽章样式微调 */
+  /* Badge styles */
   .badge {
-    filter: brightness(0.95); /* 稍微加深徽章颜色 */
+    filter: brightness(0.95);
   }
 </style>
 
 <script>
-  // 创建星星
+  // Create stars
   function createStars() {
     const starsCount = 30;
     for (let i = 0; i < starsCount; i++) {
       const star = document.createElement('div');
       star.className = 'star';
       
-      // 随机位置
+      // Random position
       star.style.left = Math.random() * 100 + 'vw';
       star.style.top = Math.random() * 100 + 'vh';
       
-      // 随机大小
+      // Random size
       const size = Math.random() * 3 + 1;
       star.style.width = size + 'px';
       star.style.height = size + 'px';
       
-      // 随机动画持续时间
+      // Random animation duration
       star.style.animationDuration = (Math.random() * 10 + 5) + 's';
       
-      // 随机延迟
+      // Random delay
       star.style.animationDelay = Math.random() * 5 + 's';
       
       document.body.appendChild(star);
     }
   }
 
-  // 页面加载后创建星星
+  // Create stars on page load
   window.addEventListener('load', createStars);
 
-  // Pastel background colors cycling
+  // Background colors cycling
   const pastelColors = [
     '#FFD1DC', '#B5EAD7', '#C7CEEA', 
     '#E2F0CB', '#FFDAC1', '#A2D2FF',
@@ -176,7 +176,7 @@ hide: true
 
 ### Me and Team
 
-Hi! My name is [Your Full Name].
+Hi! My name is Meryl.
 
 | Role         | Name     | Repo Location                       | Stream                | Repo Name |
 |--------------|----------|-------------------------------------|-----------------------|-----------|
