@@ -5,25 +5,20 @@ hide: true
 ---
 
 <style>
-  /* 原有样式 */
+  /* Pastel background colors */
   body {
-    color: white;
-    transition: background-color 0.5s ease;
-    animation: colorChange 10s infinite;
+    color: #333;
+    transition: background-color 1s ease;
+    animation: colorChange 15s infinite;
   }
   
   @keyframes colorChange {
-    0% { background-color: #FF5733; }
-    10% { background-color: #33FF57; }
-    20% { background-color: #3357FF; }
-    30% { background-color: #F333FF; }
-    40% { background-color: #FF33F3; }
-    50% { background-color: #33FFF5; }
-    60% { background-color: #F5FF33; }
-    70% { background-color: #FF8C33; }
-    80% { background-color: #8C33FF; }
-    90% { background-color: #33FF8C; }
-    100% { background-color: #FF5733; }
+    0% { background-color: #FFD1DC; } /* Pastel pink */
+    20% { background-color: #B5EAD7; } /* Pastel mint */
+    40% { background-color: #C7CEEA; } /* Pastel lavender */
+    60% { background-color: #E2F0CB; } /* Pastel green */
+    80% { background-color: #FFDAC1; } /* Pastel peach */
+    100% { background-color: #FFD1DC; } /* Pastel pink */
   }
 
   /* 星星样式 */
@@ -31,7 +26,7 @@ hide: true
     position: fixed;
     width: 3px;
     height: 3px;
-    background: white;
+    background: rgba(0,0,0,0.3);
     border-radius: 50%;
     pointer-events: none;
     z-index: 999;
@@ -47,6 +42,47 @@ hide: true
   @keyframes float {
     0% { transform: translate(0, 0) rotate(0deg); }
     100% { transform: translate(100vw, 100vh) rotate(360deg); }
+  }
+
+  /* 现代表格样式 */
+  .team-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  
+  .team-table th {
+    background: #6b4bd3;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 500;
+  }
+  
+  .team-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .team-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .team-table tr:hover {
+    background-color: #f8f7ff;
+  }
+  
+  .team-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .team-table tr:nth-child(even):hover {
+    background-color: #f0efff;
   }
 </style>
 
@@ -80,36 +116,69 @@ hide: true
   // 页面加载后创建星星
   window.addEventListener('load', createStars);
 
-  // 原有JavaScript
-  const colors = [
-    '#FF5733', '#33FF57', '#3357FF', '#F333FF', 
-    '#FF33F3', '#33FFF5', '#F5FF33', '#FF8C33',
-    '#8C33FF', '#33FF8C', '#FF3361', '#61FF33',
-    '#3361FF', '#FF33A8', '#A833FF'
+  // 更柔和的背景颜色变换
+  const pastelColors = [
+    '#FFD1DC', '#B5EAD7', '#C7CEEA', 
+    '#E2F0CB', '#FFDAC1', '#B5EAD7',
+    '#A2D2FF', '#CDB4DB', '#FFC8DD'
   ];
   
   let currentIndex = 0;
   
   function changeBackground() {
-    document.body.style.backgroundColor = colors[currentIndex];
-    currentIndex = (currentIndex + 1) % colors.length;
+    document.body.style.backgroundColor = pastelColors[currentIndex];
+    currentIndex = (currentIndex + 1) % pastelColors.length;
   }
   
-  // Change color every 500ms (0.5 seconds)
-  setInterval(changeBackground, 500);
+  // 更慢的颜色变换 (3秒)
+  setInterval(changeBackground, 3000);
 </script>
 
 ### Me and Team
 
 Hi! My name is [Your Full Name].
 
-| Role         | Name     | Repo Location                       | Stream                | Repo Name |
-|--------------|----------|-------------------------------------|-----------------------|-----------|
-| Scrum Master | John     | github.com/jm1021/student           | upstream (OCS fork)   | student   |
-| Scrummer     | Torin    | github.com/torin/student            | downstream (fork)     | student   |
-| Scrummer     | Avantika | github.com/avantika/student         | downstream (fork)     | student   |
-| Scrummer     | Aadit    | github.com/aaadit/student           | downstream (fork)     | student   |
-
+<table class="team-table">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Name</th>
+      <th>Repo Location</th>
+      <th>Stream</th>
+      <th>Repo Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Scrum Master</td>
+      <td>John</td>
+      <td>github.com/jm1021/student</td>
+      <td>upstream (OCS fork)</td>
+      <td>student</td>
+    </tr>
+    <tr>
+      <td>Scrummer</td>
+      <td>Torin</td>
+      <td>github.com/torin/student</td>
+      <td>downstream (fork)</td>
+      <td>student</td>
+    </tr>
+    <tr>
+      <td>Scrummer</td>
+      <td>Avantika</td>
+      <td>github.com/avantika/student</td>
+      <td>downstream (fork)</td>
+      <td>student</td>
+    </tr>
+    <tr>
+      <td>Scrummer</td>
+      <td>Aadit</td>
+      <td>github.com/aaadit/student</td>
+      <td>downstream (fork)</td>
+      <td>student</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Links to Learning
 
@@ -148,4 +217,4 @@ Hi! My name is [Your Full Name].
 
 > Feel free to reach out if you'd like to collaborate or learn more about our work.
 
-<p style="color: #2A7DB1;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #2A7DB1; text-decoration: underline;">Socials</a></p>
+<p style="color: #6b4bd3;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #6b4bd3; text-decoration: underline;">Socials</a></p>
