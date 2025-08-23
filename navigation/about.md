@@ -96,7 +96,7 @@ Here is what I did at those places
 - 🏫 MR Elementry School in SD - 5 years
 - 🏫 OV Middle School in SD - 2 years
 - 🏫 Dipont School of Arts and Science in HZ - 1 year
-- 🏫 DN High School - '28
+- 🏫 Del Norte High School - '28
 
 ### Culture, Family, and Fun
 
