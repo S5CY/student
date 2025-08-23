@@ -9,10 +9,6 @@ comments: true
 
 Here are some places I have lived.
 
-<comment>
-Flags are made using Wikipedia images
-</comment>
-
 <style>
     /* Style looks pretty compact, 
        - grid-container and grid-item are referenced the code 
