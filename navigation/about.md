@@ -140,7 +140,7 @@ Here are some places I have lived.
 
 ---
 
-### 🚶 Journey through Life
+## 🚶 Journey through Life
 
 Here is what I did at those places:
 
