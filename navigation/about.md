@@ -18,12 +18,14 @@ Here are some places I have lived.
     }
 
     .grid-item {
+        position: relative; /* 让彩带能定位在卡片上 */
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         text-align: center;
         padding: 15px;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        overflow: hidden;
     }
 
     .grid-item:hover {
@@ -54,6 +56,28 @@ Here are some places I have lived.
         color: #222;
     }
 
+    /* 彩带样式 */
+    .ribbon {
+        position: absolute;
+        top: 12px;
+        left: -40px;
+        width: 160px;
+        text-align: center;
+        line-height: 24px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: white;
+        transform: rotate(-45deg);
+        background: linear-gradient(90deg, #ff4d6d, #ff9f1c, #2ec4b6);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        animation: ribbonWave 3s infinite ease-in-out;
+    }
+
+    @keyframes ribbonWave {
+        0%, 100% { transform: rotate(-45deg) translateY(0); }
+        50% { transform: rotate(-45deg) translateY(3px); }
+    }
+
     @media (max-width: 600px) {
         .grid-item {
             padding: 10px;
@@ -80,6 +104,11 @@ Here are some places I have lived.
         var gridItem = document.createElement("div");
         gridItem.className = "grid-item";  
 
+        // 彩带
+        var ribbon = document.createElement("div");
+        ribbon.className = "ribbon";
+        ribbon.textContent = "✨ Lived";
+
         var img = document.createElement("img");
         img.src = http_source + location.flag; 
         img.alt = location.flag + " Flag"; 
@@ -90,6 +119,7 @@ Here are some places I have lived.
         var greeting = document.createElement("p");
         greeting.textContent = location.greeting;  
 
+        gridItem.appendChild(ribbon);
         gridItem.appendChild(img);
         gridItem.appendChild(description);
         gridItem.appendChild(greeting);
