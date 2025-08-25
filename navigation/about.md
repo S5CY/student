@@ -148,3 +148,61 @@ Here is what I did at those places:
 - 🏫 OV Middle School in SD – 2 years  
 - 🏫 Dipont School of Arts and Science in HZ – 1 year  
 - 🏫 Del Norte High School in SD – '28  
+
+---
+
+## 👨‍👩‍👧 Family
+
+Here are my family members:
+
+<div class="grid-container" id="family_container"></div>
+
+<script>
+    var familyContainer = document.getElementById("family_container");
+
+    var family_members = [
+        {
+            "flag": "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+            "role": "Dad",
+            "description": "Born in China",
+            "ribbon": "👨 Dad"
+        },
+        {
+            "flag": "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+            "role": "Mom",
+            "description": "Born in China",
+            "ribbon": "👩 Mom"
+        },
+        {
+            "flag": "0/01/Flag_of_California.svg",
+            "role": "Sister",
+            "description": "Born in USA, now in 5th grade",
+            "ribbon": "👧 Sister"
+        }
+    ];
+
+    for (const member of family_members) {
+        var gridItem = document.createElement("div");
+        gridItem.className = "grid-item";  
+
+        var ribbon = document.createElement("div");
+        ribbon.className = "ribbon";
+        ribbon.textContent = member.ribbon;
+
+        var img = document.createElement("img");
+        img.src = http_source + member.flag; 
+        img.alt = member.role + " Flag"; 
+
+        var role = document.createElement("p");
+        role.textContent = member.role;
+
+        var description = document.createElement("p");
+        description.textContent = member.description;  
+
+        gridItem.appendChild(ribbon);
+        gridItem.appendChild(img);
+        gridItem.appendChild(role);
+        gridItem.appendChild(description);
+        familyContainer.appendChild(gridItem);
+    }
+</script>
