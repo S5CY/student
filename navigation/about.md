@@ -107,7 +107,7 @@ Here are some places I have lived.
             "flag": "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
             "greeting": "你好 👋",
             "description": "China - 1 year",
-            "ribbon": "🇨🇳 China (1 year)"
+            "ribbon": "🇨🇳 1 year"
         }
     ];
 
