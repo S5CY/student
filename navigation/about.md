@@ -19,7 +19,8 @@ Here are some places I have lived.
 
     .grid-item {
         position: relative;
-        background: #fff;
+        /* 改掉原来的纯白背景，换成淡灰渐变 */
+        background: linear-gradient(135deg, #f7f7f7, #eaeaea);
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         text-align: center;
@@ -36,9 +37,10 @@ Here are some places I have lived.
     .grid-item img {
         width: 100%;
         height: 120px;
-        object-fit: cover;
+        object-fit: contain; /* 保证旗子完整显示 */
         border-radius: 8px;
         transition: transform 0.3s ease;
+        background: transparent;
     }
 
     .grid-item img:hover {
@@ -48,12 +50,12 @@ Here are some places I have lived.
     .grid-item p {
         margin: 10px 0 5px;
         font-size: 0.95rem;
-        color: #222; /* 深色文字，更清晰 */
+        color: #222;
     }
 
     .grid-item p:first-of-type {
         font-weight: bold;
-        color: #111; /* 更深的黑色，用来突出描述 */
+        color: #111;
     }
 
     /* 彩带样式 */
@@ -88,14 +90,12 @@ Here are some places I have lived.
     }
 </style>
 
-<div class="grid-container" id="grid_container">
-    <!-- content will be added here by JavaScript -->
-</div>
+<div class="grid-container" id="grid_container"></div>
 
 <script>
     var container = document.getElementById("grid_container");
-
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
+
     var living_in_the_world = [
         {
             "flag": "0/01/Flag_of_California.svg",
@@ -115,7 +115,6 @@ Here are some places I have lived.
         var gridItem = document.createElement("div");
         gridItem.className = "grid-item";  
 
-        // 彩带
         var ribbon = document.createElement("div");
         ribbon.className = "ribbon";
         ribbon.textContent = location.ribbon;
