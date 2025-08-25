@@ -346,3 +346,26 @@ Here are my family members:
         familyContainer.appendChild(card);
     });
 </script>
+
+<!-- 跳舞小猫 -->
+<style>
+  .dancing-cat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 90px;
+    z-index: 9999;
+    animation: dance 1s infinite alternate ease-in-out;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  @keyframes dance {
+    0%   { transform: rotate(-10deg) scale(1); }
+    50%  { transform: rotate(10deg) scale(1.05); }
+    100% { transform: rotate(-10deg) scale(1); }
+  }
+</style>
+
+<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" 
+     alt="Dancing Cat" class="dancing-cat">
