@@ -20,7 +20,7 @@ Here are some places I have lived.
     .grid-item {
         position: relative;
         /* 改掉原来的纯白背景，换成淡灰渐变 */
-        background: linear-gradient(135deg, #f7f7f7, #eaeaea);
+        background: linear-gradient(135deg,rgb(124, 170, 255),rgb(51, 153, 255));
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         text-align: center;
