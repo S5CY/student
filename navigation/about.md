@@ -319,7 +319,7 @@ Here are my family members:
             description: "Born in USA, now in 5th grade",
             ribbon: "👧 Sister",
             theme: "usa",
-            sticker: "🧩",
+            sticker: "👹",
             chip: "Grade: 5"
         }
     ];
