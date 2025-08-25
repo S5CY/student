@@ -353,19 +353,51 @@ Here are my family members:
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 90px;
+    width: 100px;
+    height: 100px;
     z-index: 9999;
-    animation: dance 1s infinite alternate ease-in-out;
     cursor: pointer;
-    user-select: none;
   }
 
-  @keyframes dance {
-    0%   { transform: rotate(-10deg) scale(1); }
-    50%  { transform: rotate(10deg) scale(1.05); }
-    100% { transform: rotate(-10deg) scale(1); }
+  .cat-body {
+    width: 100%;
+    height: 100%;
+    transform-origin: center bottom;
+    animation: cat-dance 1s infinite ease-in-out;
+  }
+
+  @keyframes cat-dance {
+    0%   { transform: rotate(-8deg) translateY(0); }
+    50%  { transform: rotate(8deg)  translateY(-5px); }
+    100% { transform: rotate(-8deg) translateY(0); }
+  }
+
+  .cat-tail {
+    animation: tail-swing 0.8s infinite alternate ease-in-out;
+    transform-origin: left center;
+  }
+
+  @keyframes tail-swing {
+    from { transform: rotate(20deg); }
+    to   { transform: rotate(-20deg); }
   }
 </style>
 
-<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" 
-     alt="Dancing Cat" class="dancing-cat">
+<div class="dancing-cat">
+  <svg class="cat-body" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <!-- 猫身体 -->
+    <circle cx="32" cy="40" r="18" fill="#ffcc99" stroke="#333" stroke-width="2"/>
+    <!-- 猫头 -->
+    <circle cx="32" cy="20" r="12" fill="#ffcc99" stroke="#333" stroke-width="2"/>
+    <!-- 耳朵 -->
+    <polygon points="22,10 28,16 24,20" fill="#ffcc99" stroke="#333" stroke-width="2"/>
+    <polygon points="42,10 36,16 40,20" fill="#ffcc99" stroke="#333" stroke-width="2"/>
+    <!-- 脸 -->
+    <circle cx="28" cy="18" r="2" fill="#333"/>
+    <circle cx="36" cy="18" r="2" fill="#333"/>
+    <path d="M28 22 Q32 26 36 22" stroke="#333" stroke-width="2" fill="none"/>
+    <!-- 尾巴 -->
+    <rect class="cat-tail" x="48" y="35" width="12" height="4" rx="2" ry="2" fill="#ffcc99" stroke="#333" stroke-width="2"/>
+  </svg>
+</div>
+
