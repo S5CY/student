@@ -5,95 +5,105 @@ permalink: /about/
 comments: true
 ---
 
-## As a conversation Starter
+## 🌍 As a Conversation Starter
 
 Here are some places I have lived.
 
 <style>
-    /* Style looks pretty compact, 
-       - grid-container and grid-item are referenced the code 
-    */
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Dynamic columns */
-        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
     }
+
     .grid-item {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         text-align: center;
+        padding: 15px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
+    .grid-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+
     .grid-item img {
         width: 100%;
-        height: 100px; /* Fixed height for uniformity */
-        object-fit: contain; /* Ensure the image fits within the fixed height */
-    }
-    .grid-item p {
-        margin: 5px 0; /* Add some margin for spacing */
-    }
-
-    .image-gallery {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 10px;
-        }
-
-    .image-gallery img {
-        max-height: 150px;
+        height: 120px;
         object-fit: cover;
-        border-radius: 5px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .grid-item img:hover {
+        transform: scale(1.05);
+    }
+
+    .grid-item p {
+        margin: 10px 0 5px;
+        font-size: 0.95rem;
+        color: #444;
+    }
+
+    .grid-item p:first-of-type {
+        font-weight: bold;
+        color: #222;
+    }
+
+    @media (max-width: 600px) {
+        .grid-item {
+            padding: 10px;
+        }
+        .grid-item img {
+            height: 100px;
+        }
     }
 </style>
 
-<!-- This grid_container class is used by CSS styling and the id is used by JavaScript connection -->
 <div class="grid-container" id="grid_container">
     <!-- content will be added here by JavaScript -->
 </div>
 
 <script>
-    // 1. Make a connection to the HTML container defined in the HTML div
-    var container = document.getElementById("grid_container"); // This container connects to the HTML div
+    var container = document.getElementById("grid_container");
 
-    // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
-        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hi", "description": "California - forever"},
+        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hi 👋", "description": "California - forever"},
     ];
-    // 3a. Consider how to update style count for size of container
-    // The grid-template-columns has been defined as dynamic with auto-fill and minmax
 
-    // 3b. Build grid items inside of our container for each row of data
     for (const location of living_in_the_world) {
-        // Create a "div" with "class grid-item" for each row
         var gridItem = document.createElement("div");
-        gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
-        // Add "img" HTML tag for the flag
+        gridItem.className = "grid-item";  
+
         var img = document.createElement("img");
-        img.src = http_source + location.flag; // concatenate the source and flag
-        img.alt = location.flag + " Flag"; // add alt text for accessibility
+        img.src = http_source + location.flag; 
+        img.alt = location.flag + " Flag"; 
 
-        // Add "p" HTML tag for the description
         var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
+        description.textContent = location.description; 
 
-        // Add "p" HTML tag for the greeting
         var greeting = document.createElement("p");
-        greeting.textContent = location.greeting;  // extract the greeting
+        greeting.textContent = location.greeting;  
 
-        // Append img and p HTML tags to the grid item DIV
         gridItem.appendChild(img);
         gridItem.appendChild(description);
         gridItem.appendChild(greeting);
-
-        // Append the grid item DIV to the container DIV
         container.appendChild(gridItem);
     }
 </script>
 
-### Journey through Life
+---
 
-Here is what I did at those places
+### 🚶 Journey through Life
 
-- 🏫 MR Elementry School in SD - 5 years
-- 🏫 OV Middle School in SD - 2 years
-- 🏫 Dipont School of Arts and Science in HZ - 1 year
-- 🏫 Del Norte High School in SD - '28
+Here is what I did at those places:
+
+- 🏫 MR Elementary School in SD – 5 years  
+- 🏫 OV Middle School in SD – 2 years  
+- 🏫 Dipont School of Arts and Science in HZ – 1 year  
+- 🏫 Del Norte High School in SD – '28  
