@@ -347,57 +347,87 @@ Here are my family members:
     });
 </script>
 
-<!-- 跳舞小猫 -->
+<!-- 跳舞细猫 -->
 <style>
   .dancing-cat {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 160px;
     z-index: 9999;
     cursor: pointer;
   }
 
+  /* 整个猫的舞蹈动作：左右摆动 */
   .cat-body {
     width: 100%;
     height: 100%;
     transform-origin: center bottom;
-    animation: cat-dance 1s infinite ease-in-out;
+    animation: cat-dance 1.6s infinite ease-in-out;
   }
 
   @keyframes cat-dance {
     0%   { transform: rotate(-8deg) translateY(0); }
-    50%  { transform: rotate(8deg)  translateY(-5px); }
+    50%  { transform: rotate(8deg)  translateY(-6px); }
     100% { transform: rotate(-8deg) translateY(0); }
   }
 
+  /* 尾巴摆动 */
   .cat-tail {
-    animation: tail-swing 0.8s infinite alternate ease-in-out;
+    animation: tail-swing 1s infinite alternate ease-in-out;
     transform-origin: left center;
   }
 
   @keyframes tail-swing {
-    from { transform: rotate(20deg); }
+    from { transform: rotate(25deg); }
+    to   { transform: rotate(-25deg); }
+  }
+
+  /* 前爪挥舞 */
+  .paw-left {
+    animation: paw-wave 1s infinite alternate ease-in-out;
+    transform-origin: top right;
+  }
+  .paw-right {
+    animation: paw-wave 1s infinite alternate-reverse ease-in-out;
+    transform-origin: top left;
+  }
+
+  @keyframes paw-wave {
+    from { transform: rotate(10deg); }
     to   { transform: rotate(-20deg); }
   }
 </style>
 
 <div class="dancing-cat">
-  <svg class="cat-body" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-    <!-- 猫身体 -->
-    <circle cx="32" cy="40" r="18" fill="#ffcc99" stroke="#333" stroke-width="2"/>
-    <!-- 猫头 -->
-    <circle cx="32" cy="20" r="12" fill="#ffcc99" stroke="#333" stroke-width="2"/>
-    <!-- 耳朵 -->
-    <polygon points="22,10 28,16 24,20" fill="#ffcc99" stroke="#333" stroke-width="2"/>
-    <polygon points="42,10 36,16 40,20" fill="#ffcc99" stroke="#333" stroke-width="2"/>
-    <!-- 脸 -->
-    <circle cx="28" cy="18" r="2" fill="#333"/>
-    <circle cx="36" cy="18" r="2" fill="#333"/>
-    <path d="M28 22 Q32 26 36 22" stroke="#333" stroke-width="2" fill="none"/>
+  <svg class="cat-body" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+    <!-- 身体 (细长) -->
+    <ellipse cx="60" cy="100" rx="22" ry="40" fill="none" stroke="#333" stroke-width="3"/>
+    
+    <!-- 头 (椭圆，不是大圆) -->
+    <ellipse cx="60" cy="45" rx="20" ry="22" fill="none" stroke="#333" stroke-width="3"/>
+    
+    <!-- 耳朵 (尖尖) -->
+    <polygon points="40,25 50,35 45,10" fill="none" stroke="#333" stroke-width="3"/>
+    <polygon points="80,25 70,35 75,10" fill="none" stroke="#333" stroke-width="3"/>
+    
+    <!-- 眼睛 -->
+    <circle cx="52" cy="42" r="2" fill="#333"/>
+    <circle cx="68" cy="42" r="2" fill="#333"/>
+    <!-- 嘴 -->
+    <path d="M54 50 Q60 56 66 50" stroke="#333" stroke-width="2" fill="none"/>
+    
     <!-- 尾巴 -->
-    <rect class="cat-tail" x="48" y="35" width="12" height="4" rx="2" ry="2" fill="#ffcc99" stroke="#333" stroke-width="2"/>
+    <path class="cat-tail" d="M82 110 Q110 100 100 140" fill="none" stroke="#333" stroke-width="3"/>
+    
+    <!-- 左爪 -->
+    <line class="paw-left" x1="40" y1="80" x2="20" y2="60" stroke="#333" stroke-width="3"/>
+    <!-- 右爪 -->
+    <line class="paw-right" x1="80" y1="80" x2="100" y2="60" stroke="#333" stroke-width="3"/>
+    
+    <!-- 腿 -->
+    <line x1="50" y1="140" x2="45" y2="155" stroke="#333" stroke-width="3"/>
+    <line x1="70" y1="140" x2="75" y2="155" stroke="#333" stroke-width="3"/>
   </svg>
 </div>
-
