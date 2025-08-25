@@ -18,7 +18,7 @@ Here are some places I have lived.
     }
 
     .grid-item {
-        position: relative; /* 让彩带能定位在卡片上 */
+        position: relative;
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -97,7 +97,18 @@ Here are some places I have lived.
 
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
-        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hi 👋", "description": "California - forever"},
+        {
+            "flag": "0/01/Flag_of_California.svg",
+            "greeting": "Hi 👋",
+            "description": "California - forever",
+            "ribbon": "🏠 Home"
+        },
+        {
+            "flag": "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+            "greeting": "你好 👋",
+            "description": "China - 1 year",
+            "ribbon": "🇨🇳 China (1 year)"
+        }
     ];
 
     for (const location of living_in_the_world) {
@@ -107,7 +118,7 @@ Here are some places I have lived.
         // 彩带
         var ribbon = document.createElement("div");
         ribbon.className = "ribbon";
-        ribbon.textContent = "✨ Lived";
+        ribbon.textContent = location.ribbon;
 
         var img = document.createElement("img");
         img.src = http_source + location.flag; 
