@@ -48,12 +48,12 @@ Here are some places I have lived.
     .grid-item p {
         margin: 10px 0 5px;
         font-size: 0.95rem;
-        color: #444;
+        color: #222; /* 深色文字，更清晰 */
     }
 
     .grid-item p:first-of-type {
         font-weight: bold;
-        color: #222;
+        color: #111; /* 更深的黑色，用来突出描述 */
     }
 
     /* 彩带样式 */
@@ -107,7 +107,7 @@ Here are some places I have lived.
             "flag": "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
             "greeting": "你好 👋",
             "description": "China - 1 year",
-            "ribbon": "🇨🇳 1 year"
+            "ribbon": "🇨🇳 China (1 year)"
         }
     ];
 
