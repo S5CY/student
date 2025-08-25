@@ -347,87 +347,273 @@ Here are my family members:
     });
 </script>
 
-<!-- 跳舞细猫 -->
+<!-- ========= Fancy Dancing Cat (colored + detailed) ========= -->
 <style>
-  .dancing-cat {
+  /* 容器定位在右下角 */
+  .fx-cat-wrap {
     position: fixed;
-    bottom: 20px;
     right: 20px;
-    width: 120px;
-    height: 160px;
+    bottom: 20px;
+    width: 140px;  /* 你可以调大/调小 */
+    height: 180px;
     z-index: 9999;
     cursor: pointer;
+    user-select: none;
   }
 
-  /* 整个猫的舞蹈动作：左右摆动 */
-  .cat-body {
+  /* 整体舞动：轻微上下律动 + 左右摆 */
+  .fx-cat-svg {
     width: 100%;
     height: 100%;
-    transform-origin: center bottom;
-    animation: cat-dance 1.6s infinite ease-in-out;
+    transform-origin: 50% 90%;
+    animation: fx-cat-bop 1.6s ease-in-out infinite;
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));
+  }
+  @keyframes fx-cat-bop {
+    0%   { transform: translateY(0) rotate(-3deg); }
+    50%  { transform: translateY(-6px) rotate(3deg); }
+    100% { transform: translateY(0) rotate(-3deg); }
   }
 
-  @keyframes cat-dance {
-    0%   { transform: rotate(-8deg) translateY(0); }
-    50%  { transform: rotate(8deg)  translateY(-6px); }
-    100% { transform: rotate(-8deg) translateY(0); }
+  /* 尾巴左右摆动 */
+  .fx-tail {
+    transform-origin: 80px 120px; /* 与路径坐标对应的近似枢轴点 */
+    animation: fx-tail-swing 0.9s ease-in-out infinite alternate;
+  }
+  @keyframes fx-tail-swing {
+    from { transform: rotate(18deg); }
+    to   { transform: rotate(-22deg); }
   }
 
-  /* 尾巴摆动 */
-  .cat-tail {
-    animation: tail-swing 1s infinite alternate ease-in-out;
-    transform-origin: left center;
+  /* 前爪挥舞（左右互相错相） */
+  .fx-paw-left {
+    transform-origin: 38px 84px;
+    animation: fx-paw-wave 0.8s ease-in-out infinite alternate;
+  }
+  .fx-paw-right {
+    transform-origin: 82px 84px;
+    animation: fx-paw-wave 0.8s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes fx-paw-wave {
+    from { transform: rotate(12deg); }
+    to   { transform: rotate(-16deg); }
   }
 
-  @keyframes tail-swing {
-    from { transform: rotate(25deg); }
-    to   { transform: rotate(-25deg); }
+  /* 耳朵轻微抖动（很小幅度） */
+  .fx-ears {
+    transform-origin: 60px 28px;
+    animation: fx-ear-twitch 2.8s ease-in-out infinite;
+  }
+  @keyframes fx-ear-twitch {
+    0%, 92%, 100% { transform: rotate(0deg); }
+    94% { transform: rotate(-4deg); }
+    96% { transform: rotate(4deg); }
+    98% { transform: rotate(-2deg); }
   }
 
-  /* 前爪挥舞 */
-  .paw-left {
-    animation: paw-wave 1s infinite alternate ease-in-out;
-    transform-origin: top right;
+  /* 眼睛眨眼：用遮罩高度变化实现 */
+  .fx-eye-mask {
+    animation: fx-blink 4.2s infinite;
+    transform-origin: 0 0;
   }
-  .paw-right {
-    animation: paw-wave 1s infinite alternate-reverse ease-in-out;
-    transform-origin: top left;
+  @keyframes fx-blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    94% { transform: scaleY(0.15); }
+    96% { transform: scaleY(1); }
   }
 
-  @keyframes paw-wave {
-    from { transform: rotate(10deg); }
-    to   { transform: rotate(-20deg); }
+  /* 腿部轻微摆动（制造节奏感） */
+  .fx-legs {
+    transform-origin: 60px 150px;
+    animation: fx-legs-step 1.6s ease-in-out infinite;
+  }
+  @keyframes fx-legs-step {
+    0%   { transform: translateX(-1px) rotate(-1deg); }
+    50%  { transform: translateX(1px) rotate(1deg); }
+    100% { transform: translateX(-1px) rotate(-1deg); }
+  }
+
+  /* 脚下投影：随节奏缩放 */
+  .fx-shadow {
+    transform-origin: 60px 170px;
+    animation: fx-shadow-pulse 1.6s ease-in-out infinite;
+    opacity: .35;
+  }
+  @keyframes fx-shadow-pulse {
+    0%   { transform: scaleX(1);   opacity: .35; }
+    50%  { transform: scaleX(1.12); opacity: .22; }
+    100% { transform: scaleX(1);   opacity: .35; }
+  }
+
+  /* 可选：点击切换“彩色项圈光泽” */
+  .fx-cat-wrap:active .fx-collar-gloss {
+    opacity: .9;
   }
 </style>
 
-<div class="dancing-cat">
-  <svg class="cat-body" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
-    <!-- 身体 (细长) -->
-    <ellipse cx="60" cy="100" rx="22" ry="40" fill="none" stroke="#333" stroke-width="3"/>
-    
-    <!-- 头 (椭圆，不是大圆) -->
-    <ellipse cx="60" cy="45" rx="20" ry="22" fill="none" stroke="#333" stroke-width="3"/>
-    
-    <!-- 耳朵 (尖尖) -->
-    <polygon points="40,25 50,35 45,10" fill="none" stroke="#333" stroke-width="3"/>
-    <polygon points="80,25 70,35 75,10" fill="none" stroke="#333" stroke-width="3"/>
-    
-    <!-- 眼睛 -->
-    <circle cx="52" cy="42" r="2" fill="#333"/>
-    <circle cx="68" cy="42" r="2" fill="#333"/>
-    <!-- 嘴 -->
-    <path d="M54 50 Q60 56 66 50" stroke="#333" stroke-width="2" fill="none"/>
-    
-    <!-- 尾巴 -->
-    <path class="cat-tail" d="M82 110 Q110 100 100 140" fill="none" stroke="#333" stroke-width="3"/>
-    
-    <!-- 左爪 -->
-    <line class="paw-left" x1="40" y1="80" x2="20" y2="60" stroke="#333" stroke-width="3"/>
-    <!-- 右爪 -->
-    <line class="paw-right" x1="80" y1="80" x2="100" y2="60" stroke="#333" stroke-width="3"/>
-    
-    <!-- 腿 -->
-    <line x1="50" y1="140" x2="45" y2="155" stroke="#333" stroke-width="3"/>
-    <line x1="70" y1="140" x2="75" y2="155" stroke="#333" stroke-width="3"/>
+<div class="fx-cat-wrap" title="meow~">
+  <svg class="fx-cat-svg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- ① 背景光晕（柔和） -->
+    <defs>
+      <radialGradient id="fx-bg-glow" cx="50%" cy="40%" r="70%">
+        <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.25"/>
+        <stop offset="100%" stop-color="#9fd9ff" stop-opacity="0.0"/>
+      </radialGradient>
+
+      <!-- 毛色渐变（主色：奶油橘） -->
+      <linearGradient id="fx-fur" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f7c88a"/>
+        <stop offset="100%" stop-color="#e6a96e"/>
+      </linearGradient>
+
+      <!-- 肚皮浅色 -->
+      <linearGradient id="fx-belly" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#fff3e2"/>
+        <stop offset="100%" stop-color="#ffe5c7"/>
+      </linearGradient>
+
+      <!-- 耳朵内侧粉 -->
+      <linearGradient id="fx-ear-inner" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffc7d6"/>
+        <stop offset="100%" stop-color="#f8a9bf"/>
+      </linearGradient>
+
+      <!-- 项圈红 + 高光 -->
+      <linearGradient id="fx-collar" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#ff4b5c"/>
+        <stop offset="100%" stop-color="#ff7a4a"/>
+      </linearGradient>
+      <linearGradient id="fx-collar-gloss-grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+
+      <!-- 眨眼遮罩（矩形高度变化） -->
+      <mask id="fx-eye-mask">
+        <rect class="fx-eye-mask" x="0" y="0" width="120" height="180" fill="#fff"/>
+      </mask>
+
+      <!-- 条纹路径用的描边样式 -->
+      <style>
+        .fx-stripe { stroke:#d58640; stroke-width:3; stroke-linecap:round; fill:none; }
+      </style>
+    </defs>
+
+    <!-- 背景光晕 -->
+    <circle cx="60" cy="70" r="62" fill="url(#fx-bg-glow)"/>
+
+    <!-- ② 脚下投影 -->
+    <ellipse class="fx-shadow" cx="60" cy="168" rx="24" ry="6" fill="#000"/>
+
+    <!-- ③ 尾巴（长而细，带浅色尖端） -->
+    <g class="fx-tail">
+      <path d="M78 118 
+               C 100 110, 112 118, 108 138
+               C 106 148, 94 150, 90 140
+               C 88 135, 88 130, 80 125
+               Z" 
+            fill="url(#fx-fur)" opacity="0.95"/>
+      <!-- 尾巴轮廓线 -->
+      <path d="M78 118 
+               C 100 110, 112 118, 108 138
+               C 106 148, 94 150, 90 140
+               C 88 135, 88 130, 80 125" 
+            fill="none" stroke="#3b2c22" stroke-width="2"/>
+      <!-- 尾尖浅色 -->
+      <path d="M100 140
+               C 102 142, 96 146, 92 142
+               C 95 140, 97 139, 100 140 Z"
+            fill="#ffe5c7" opacity="0.8"/>
+    </g>
+
+    <!-- ④ 身体（细长），含肚皮、条纹 -->
+    <g class="fx-body">
+      <!-- 主体 -->
+      <path d="M40 70 
+               Q 60 58, 80 70
+               C 86 96, 84 126, 60 146
+               C 36 126, 34 96, 40 70 Z"
+            fill="url(#fx-fur)" stroke="#3b2c22" stroke-width="2"/>
+
+      <!-- 肚皮浅色 -->
+      <path d="M52 78 
+               Q 60 72, 68 78
+               C 72 98, 70 120, 60 132
+               C 50 120, 48 98, 52 78 Z"
+            fill="url(#fx-belly)" opacity="0.95"/>
+
+      <!-- 身体条纹 -->
+      <path class="fx-stripe" d="M48 94 L40 90"/>
+      <path class="fx-stripe" d="M50 106 L41 102"/>
+      <path class="fx-stripe" d="M72 94 L80 90"/>
+      <path class="fx-stripe" d="M70 108 L79 104"/>
+    </g>
+
+    <!-- ⑤ 头部（尖耳朵、脸部、胡须） -->
+    <g class="fx-head">
+      <!-- 头轮廓（稍微椭圆） -->
+      <ellipse cx="60" cy="44" rx="18" ry="20" fill="url(#fx-fur)" stroke="#3b2c22" stroke-width="2"/>
+
+      <!-- 耳朵（尖且高） -->
+      <g class="fx-ears">
+        <path d="M42 24 L50 34 L48 10 Z" fill="url(#fx-fur)" stroke="#3b2c22" stroke-width="2"/>
+        <path d="M78 24 L70 34 L72 10 Z" fill="url(#fx-fur)" stroke="#3b2c22" stroke-width="2"/>
+        <!-- 耳朵内侧 -->
+        <path d="M45 22 L50 34 L49 14 Z" fill="url(#fx-ear-inner)"/>
+        <path d="M75 22 L70 34 L71 14 Z" fill="url(#fx-ear-inner)"/>
+      </g>
+
+      <!-- 眼睛（用遮罩实现眨眼） -->
+      <g mask="url(#fx-eye-mask)">
+        <ellipse cx="53" cy="42" rx="2.6" ry="3.2" fill="#1f1f1f"/>
+        <ellipse cx="67" cy="42" rx="2.6" ry="3.2" fill="#1f1f1f"/>
+        <!-- 高光点 -->
+        <circle cx="52.2" cy="41.2" r="0.8" fill="#fff" opacity=".9"/>
+        <circle cx="66.2" cy="41.2" r="0.8" fill="#fff" opacity=".9"/>
+      </g>
+
+      <!-- 鼻子 + 嘴 -->
+      <path d="M58 48 Q60 50 62 48" fill="#e88" stroke="#3b2c22" stroke-width="1.2"/>
+      <path d="M60 50
+               c -2 1 -4 3 -4 5
+               m 4 -5
+               c 2 1 4 3 4 5" 
+            stroke="#3b2c22" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+      <!-- 胡须 -->
+      <path d="M46 48 L36 47" stroke="#3b2c22" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M46 51 L35 52" stroke="#3b2c22" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M74 48 L84 47" stroke="#3b2c22" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M74 51 L85 52" stroke="#3b2c22" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+
+    <!-- ⑥ 项圈与小铃铛 -->
+    <g class="fx-collar">
+      <path d="M45 64 C 54 62, 66 62, 75 64" fill="none" stroke="url(#fx-collar)" stroke-width="6" stroke-linecap="round"/>
+      <ellipse class="fx-collar-gloss" cx="60" cy="63" rx="26" ry="6" fill="url(#fx-collar-gloss-grad)" opacity=".65"/>
+      <!-- 小铃铛 -->
+      <circle cx="60" cy="66" r="4.2" fill="#ffd45c" stroke="#a87b1f" stroke-width="1.5"/>
+      <line x1="60" y1="66" x2="60" y2="68.8" stroke="#a87b1f" stroke-width="1.4" stroke-linecap="round"/>
+    </g>
+
+    <!-- ⑦ 前爪（细长） -->
+    <g class="fx-paw-left">
+      <line x1="52" y1="84" x2="34" y2="66" stroke="#3b2c22" stroke-width="3" stroke-linecap="round"/>
+      <path d="M34 66 Q 31 64, 28 66 Q 31 70, 34 66 Z" fill="url(#fx-fur)" stroke="#3b2c22" stroke-width="1.5"/>
+    </g>
+    <g class="fx-paw-right">
+      <line x1="68" y1="84" x2="86" y2="66" stroke="#3b2c22" stroke-width="3" stroke-linecap="round"/>
+      <path d="M86 66 Q 89 64, 92 66 Q 89 70, 86 66 Z" fill="url(#fx-fur)" stroke="#3b2c22" stroke-width="1.5"/>
+    </g>
+
+    <!-- ⑧ 后腿（细长） -->
+    <g class="fx-legs">
+      <path d="M54 146 L48 164" stroke="#3b2c22" stroke-width="3" stroke-linecap="round"/>
+      <path d="M66 146 L72 164" stroke="#3b2c22" stroke-width="3" stroke-linecap="round"/>
+      <!-- 爪垫（小点装饰） -->
+      <circle cx="46.5" cy="165.5" r="1.4" fill="#3b2c22" opacity=".8"/>
+      <circle cx="73.5" cy="165.5" r="1.4" fill="#3b2c22" opacity=".8"/>
+    </g>
   </svg>
 </div>
+<!-- ========= /Fancy Dancing Cat ========= -->
