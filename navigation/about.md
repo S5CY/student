@@ -78,14 +78,6 @@ Here are some places I have lived.
         // Add "p" HTML tag for the greeting
         var greeting = document.createElement("p");
         greeting.textContent = location.greeting;  // extract the greeting
-
-        // Append img and p HTML tags to the grid item DIV
-        gridItem.appendChild(img);
-        gridItem.appendChild(description);
-        gridItem.appendChild(greeting);
-
-        // Append the grid item DIV to the container DIV
-        container.appendChild(gridItem);
     }
 </script>
 
