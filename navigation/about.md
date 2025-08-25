@@ -510,3 +510,83 @@ Here are my family members:
     </g>
   </svg>
 </div>
+<!-- ============================================================
+     Cute Roach with Collar (左下角)
+=============================================================== -->
+<style>
+  .roach-wrap{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 120px;
+    height: 160px;
+    z-index: 9999;
+    cursor: pointer;
+  }
+
+  .roach-svg{
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 90%;
+    animation: roach-bop 1.6s ease-in-out infinite;
+  }
+  @keyframes roach-bop{
+    0%   { transform: translateY(0) rotate(-2deg); }
+    50%  { transform: translateY(-4px) rotate(2deg); }
+    100% { transform: translateY(0) rotate(-2deg); }
+  }
+
+  .roach-antenna-left,
+  .roach-antenna-right{
+    animation: antenna-wiggle 1.2s ease-in-out infinite alternate;
+    transform-origin: bottom center;
+  }
+  @keyframes antenna-wiggle{
+    from { transform: rotate(-10deg); }
+    to   { transform: rotate(10deg); }
+  }
+
+  .roach-collar{
+    animation: collar-bounce 1.6s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes collar-bounce{
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.05); }
+  }
+</style>
+
+<div class="roach-wrap" title="cute roach~">
+  <svg class="roach-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- 身体 -->
+    <ellipse cx="60" cy="90" rx="30" ry="40" fill="#5a3d2b" stroke="#2d1e15" stroke-width="3"/>
+    <!-- 背部小线条 -->
+    <line x1="60" y1="50" x2="60" y2="130" stroke="#2d1e15" stroke-width="2" stroke-dasharray="6 4"/>
+    
+    <!-- 眼睛 -->
+    <circle cx="45" cy="70" r="7" fill="white" stroke="#2d1e15" stroke-width="2"/>
+    <circle cx="75" cy="70" r="7" fill="white" stroke="#2d1e15" stroke-width="2"/>
+    <circle cx="45" cy="70" r="3" fill="black"/>
+    <circle cx="75" cy="70" r="3" fill="black"/>
+
+    <!-- 嘴巴小笑 -->
+    <path d="M48 82 Q60 90 72 82" stroke="#2d1e15" stroke-width="2" fill="none"/>
+
+    <!-- 触角 -->
+    <line class="roach-antenna-left" x1="45" y1="55" x2="25" y2="25" stroke="#2d1e15" stroke-width="3" stroke-linecap="round"/>
+    <line class="roach-antenna-right" x1="75" y1="55" x2="95" y2="25" stroke="#2d1e15" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- 腿 -->
+    <line x1="40" y1="115" x2="25" y2="140" stroke="#2d1e15" stroke-width="3" stroke-linecap="round"/>
+    <line x1="80" y1="115" x2="95" y2="140" stroke="#2d1e15" stroke-width="3" stroke-linecap="round"/>
+    <line x1="60" y1="125" x2="60" y2="150" stroke="#2d1e15" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- 红色项圈 -->
+    <g class="roach-collar">
+      <ellipse cx="60" cy="105" rx="32" ry="8" fill="red" stroke="#7a0000" stroke-width="2"/>
+      <!-- 金色铃铛 -->
+      <circle cx="60" cy="112" r="7" fill="#ffd45c" stroke="#a87b1f" stroke-width="2"/>
+      <line x1="60" y1="112" x2="60" y2="116" stroke="#a87b1f" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </svg>
+</div>
