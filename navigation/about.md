@@ -68,7 +68,7 @@ Here are some places I have lived.
         font-weight: bold;
         color: white;
         transform: rotate(-45deg);
-        background: linear-gradient(90deg, #ff4d6d, #ff9f1c, #2ec4b6);
+        background: linear-gradient(90deg,rgb(255, 77, 169),rgb(123, 28, 255),rgb(46, 196, 194));
         box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         animation: ribbonWave 3s infinite ease-in-out;
     }
