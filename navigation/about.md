@@ -348,7 +348,7 @@ Here are my family members:
 </script>
 
 <!-- ============================================================
-     可爱蟑螂 (左下角) v2
+     可爱蟑螂 v3（左下角）- 去掉背线 / 更小更细的红色项圈
 =============================================================== -->
 <style>
   .silly-roach-wrap {
@@ -365,6 +365,7 @@ Here are my family members:
     height: 100%;
     transform-origin: 50% 90%;
     animation: roach-bounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));
   }
   @keyframes roach-bounce {
     0%, 100% { transform: translateY(0); }
@@ -394,48 +395,62 @@ Here are my family members:
   }
 
   .bell-group {
-    transform-origin: 60px 86px;
+    transform-origin: 60px 82px; /* 小项圈位置 */
     animation: bell-swing 1.6s ease-in-out infinite;
   }
   @keyframes bell-swing {
-    0%   { transform: rotate(-8deg); }
-    50%  { transform: rotate(8deg); }
-    100% { transform: rotate(-8deg); }
+    0%   { transform: rotate(-6deg); }
+    50%  { transform: rotate(6deg); }
+    100% { transform: rotate(-6deg); }
   }
 
+  /* 新项圈：细小的红色圆环 */
   .collar-band {
-    fill: url(#roachCollarGrad);
-    stroke: #7a0000;
-    stroke-width: 3;
+    fill: none;
+    stroke: red;
+    stroke-width: 4;
   }
-  .collar-gloss { fill: rgba(255,255,255,.55); }
-  .roach-bell { fill: #ffd45c; stroke: #a87b1f; stroke-width: 2; }
+  .roach-bell {
+    fill: #ffd45c;
+    stroke: #a87b1f;
+    stroke-width: 2;
+  }
   .belly-patch { fill: #e7b994; opacity: .55; }
 </style>
 
 <div class="silly-roach-wrap">
   <svg class="silly-roach-svg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="roachCollarGrad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%"  stop-color="#ff4b5c"/>
-        <stop offset="100%" stop-color="#ff7a4a"/>
-      </linearGradient>
-      <clipPath id="collarClip">
-        <ellipse cx="60" cy="86" rx="38" ry="8"/>
-      </clipPath>
-    </defs>
-
+    <!-- 身体 -->
     <ellipse cx="60" cy="102" rx="35" ry="56" fill="#a46b43" stroke="#222" stroke-width="6"/>
-    <line x1="60" y1="50" x2="60" y2="154" stroke="#2d1e15" stroke-width="2" stroke-dasharray="6 4" opacity=".7"/>
+    <!-- 肚皮淡色补丁 -->
     <ellipse class="belly-patch" cx="60" cy="118" rx="22" ry="30"/>
 
+    <!-- 手 -->
     <line x1="45" y1="112" x2="56" y2="128" stroke="#222" stroke-width="6" stroke-linecap="round"/>
     <line x1="75" y1="112" x2="64" y2="128" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+    <!-- 腿 -->
     <line x1="48" y1="150" x2="48" y2="170" stroke="#222" stroke-width="6" stroke-linecap="round"/>
     <line x1="72" y1="150" x2="72" y2="170" stroke="#222" stroke-width="6" stroke-linecap="round"/>
 
+    <!-- 头 + 触角 -->
     <g class="roach-head">
       <line class="roach-antenna" x1="45" y1="28" x2="25" y2="8"/>
       <line class="roach-antenna" x1="75" y1="28" x2="95" y2="8"/>
       <ellipse cx="60" cy="60" rx="40" ry="34" fill="#c89062" stroke="#222" stroke-width="6"/>
-      <circle
+      <circle cx="45" cy="56" r="5" fill="#222"/>
+      <circle cx="75" cy="56" r="5" fill="#222"/>
+      <path d="M50 70 Q60 80 70 70" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- 小项圈 + 铃铛 -->
+    <g class="bell-group">
+      <!-- 项圈环 -->
+      <ellipse class="collar-band" cx="60" cy="82" rx="26" ry="6"/>
+      <!-- 链接线 -->
+      <line x1="60" y1="85" x2="60" y2="92" stroke="#a87b1f" stroke-width="3" stroke-linecap="round"/>
+      <!-- 铃铛 -->
+      <circle class="roach-bell" cx="60" cy="100" r="9"/>
+      <line x1="60" y1="100" x2="60" y2="104" stroke="#a87b1f" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </svg>
+</div>
