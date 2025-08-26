@@ -348,7 +348,7 @@ Here are my family members:
 </script>
 
 <!-- ============================================================
-     可爱蟑螂 v3（左下角）- 去掉背线 / 更小更细的红色项圈
+     可爱蟑螂 v4 - 调低项圈位置，避免压到脸
 =============================================================== -->
 <style>
   .silly-roach-wrap {
@@ -395,7 +395,7 @@ Here are my family members:
   }
 
   .bell-group {
-    transform-origin: 60px 82px; /* 小项圈位置 */
+    transform-origin: 60px 96px; /* 调低挂点 */
     animation: bell-swing 1.6s ease-in-out infinite;
   }
   @keyframes bell-swing {
@@ -404,7 +404,6 @@ Here are my family members:
     100% { transform: rotate(-6deg); }
   }
 
-  /* 新项圈：细小的红色圆环 */
   .collar-band {
     fill: none;
     stroke: red;
@@ -422,7 +421,6 @@ Here are my family members:
   <svg class="silly-roach-svg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
     <!-- 身体 -->
     <ellipse cx="60" cy="102" rx="35" ry="56" fill="#a46b43" stroke="#222" stroke-width="6"/>
-    <!-- 肚皮淡色补丁 -->
     <ellipse class="belly-patch" cx="60" cy="118" rx="22" ry="30"/>
 
     <!-- 手 -->
@@ -442,15 +440,12 @@ Here are my family members:
       <path d="M50 70 Q60 80 70 70" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
     </g>
 
-    <!-- 小项圈 + 铃铛 -->
+    <!-- 小项圈 + 铃铛（整体下移） -->
     <g class="bell-group">
-      <!-- 项圈环 -->
-      <ellipse class="collar-band" cx="60" cy="82" rx="26" ry="6"/>
-      <!-- 链接线 -->
-      <line x1="60" y1="85" x2="60" y2="92" stroke="#a87b1f" stroke-width="3" stroke-linecap="round"/>
-      <!-- 铃铛 -->
-      <circle class="roach-bell" cx="60" cy="100" r="9"/>
-      <line x1="60" y1="100" x2="60" y2="104" stroke="#a87b1f" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse class="collar-band" cx="60" cy="92" rx="24" ry="5"/> <!-- 项圈位置调低 -->
+      <line x1="60" y1="95" x2="60" y2="102" stroke="#a87b1f" stroke-width="3" stroke-linecap="round"/>
+      <circle class="roach-bell" cx="60" cy="110" r="9"/>
+      <line x1="60" y1="110" x2="60" y2="114" stroke="#a87b1f" stroke-width="2.5" stroke-linecap="round"/>
     </g>
   </svg>
 </div>
