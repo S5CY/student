@@ -238,7 +238,7 @@ Here are some places I have lived.
     // ====== 轻量彩带（表情）动画 ======
     var celebrateBtn = document.getElementById("celebrateBtn");
     celebrateBtn.addEventListener("click", () => {
-        launchEmojiConfetti(["🎉","✨","🎊","🌟","💫","🎈"]);
+        launchEmojiConfetti(["🎉","✨","🎊","🌟","💫","🎉","✨","🎊","🌟","💫","🌟","🎉","✨","🎊","🌟","💫","🌟","🎉","✨","🎊","🌟","💫","🌟","🎉","✨","🎊","🌟","💫","🌟","🎉","✨","🎊","🌟","💫","🌟","🎉","✨","🎊","🌟","💫","🌟","🎉","✨","🎊","🌟"]);
     });
 
     function launchEmojiConfetti(emojis){
