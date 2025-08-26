@@ -6,14 +6,14 @@ hide: true
 
 <style>
   :root{
-    --ink:#45455a;
-    --ink-2:#5a5a77;
-    --primary:#6A5ACD;          /* Slate Blue */
-    --accent-1:#B5C7EA;         /* 柔蓝 */
-    --accent-2:#C7B5EA;         /* 柔紫 */
-    --glass-bg: rgba(255,255,255,0.9);
-    --glass-brd: rgba(220,220,255,0.55);
-    --shadow: 0 8px 24px rgba(120,120,180,0.18);
+    --ink:#dcdcef;               /* 浅灰紫文字 */
+    --ink-2:#b5b5d0;
+    --primary:#4A3FA6;           /* 深蓝紫 */
+    --accent-1:#5c6ac4;          /* 蓝紫 */
+    --accent-2:#7c5ac7;          /* 紫色 */
+    --glass-bg: rgba(30,30,60,0.7);
+    --glass-brd: rgba(100,100,150,0.4);
+    --shadow: 0 8px 24px rgba(0,0,0,0.45);
   }
 
   html, body {
@@ -30,23 +30,23 @@ hide: true
   }
 
   @keyframes bgCycle {
-    0%   { background: radial-gradient(1200px 800px at 10% 10%, #FFF0F5 0%, #F0F8FF 55%, #F5F0FF 100%); }
-    50%  { background: radial-gradient(1200px 800px at 90% 20%, #F0FFF0 0%, #FFF8F0 60%, #F0F5FF 100%); }
-    100% { background: radial-gradient(1200px 800px at 50% 80%, #E6F9FF 0%, #F8F0FF 60%, #FFF0F5 100%); }
+    0%   { background: radial-gradient(1200px 800px at 10% 10%, #1f1b2e 0%, #2a2d4f 55%, #3b2d56 100%); }
+    50%  { background: radial-gradient(1200px 800px at 90% 20%, #2c2f50 0%, #3b345c 60%, #26223d 100%); }
+    100% { background: radial-gradient(1200px 800px at 50% 80%, #1e1e33 0%, #32294f 60%, #201d36 100%); }
   }
 
   .star {
     position: fixed;
     width: 2px;
     height: 2px;
-    background: rgba(180, 180, 255, 0.75);
+    background: rgba(200, 200, 255, 0.7);
     border-radius: 50%;
     pointer-events: none;
     z-index: 1;
     animation: twinkle 2.2s infinite alternate ease-in-out, float 38s linear infinite;
   }
   @keyframes twinkle {
-    0%   { opacity: .35; transform: scale(.6); }
+    0%   { opacity: .25; transform: scale(.6); }
     100% { opacity: 1;   transform: scale(1); }
   }
   @keyframes float {
@@ -69,7 +69,7 @@ hide: true
     border: 1px solid var(--glass-brd);
     border-radius: 16px;
     box-shadow: var(--shadow);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -87,10 +87,10 @@ hide: true
     width: 100%;
     border-collapse: collapse;
     margin: 1.2rem 0;
-    background: #fff;
+    background: rgba(40,40,70,0.8);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(150,150,200,0.12);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
   }
   th {
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
@@ -104,14 +104,14 @@ hide: true
   }
   td {
     padding: 12px 14px;
-    border-bottom: 1px solid #F0F0FF;
-    color: #4e4e7a !important; /* 柔和蓝紫色 */
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #d0cdee !important;
     transition: background-color .2s ease, color .2s ease;
   }
   tr:last-child td { border-bottom: none; }
   tr:hover td {
-    background-color: rgba(200,200,255,0.06);
-    color: var(--primary) !important;
+    background-color: rgba(120,120,200,0.15);
+    color: #fff !important;
   }
 
   .button.small, .badge {
@@ -126,45 +126,45 @@ hide: true
     font-weight: 600;
     padding: 10px 18px;
     border-radius: 22px;
-    box-shadow: 0 4px 12px rgba(150, 130, 200, 0.28);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
   }
   .button.small:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(150, 130, 200, 0.35);
-    filter: saturate(1.05);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+    filter: brightness(1.1);
   }
   .badge {
     padding: 6px 10px;
     border-radius: 10px;
-    background-color: rgba(200,200,255,0.22);
-    color: var(--primary);
+    background-color: rgba(100,100,160,0.3);
+    color: var(--ink);
     font-weight: 600;
     transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
   }
   .badge:hover {
     transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(200,200,255,0.28);
-    background-color: rgba(200,200,255,0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    background-color: rgba(120,120,200,0.4);
   }
 
   a {
-    color: #7A6CEC !important;
+    color: #9c93ff !important;
     font-weight: 600;
     text-decoration: none;
-    transition: color .15s ease, text-decoration-color .15s ease;
+    transition: color .15s ease;
   }
-  a:hover { color: #5E50D2 !important; text-decoration: underline; }
+  a:hover { color: #cfcaff !important; }
 
   #contact {
-    background: var(--glass-bg);
+    background: rgba(40,40,70,0.8);
     padding: 1.6rem;
     border-radius: 12px;
     margin-top: 2rem;
-    box-shadow: 0 2px 10px rgba(200,200,255,0.16);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     border: 1px solid var(--glass-brd);
   }
-  #contact p { color: var(--ink-2) !important; margin-bottom: .8rem; }
+  #contact p { color: var(--ink) !important; margin-bottom: .8rem; }
 
   @media (max-width: 640px) {
     main { margin: 20px auto; padding: 16px; border-radius: 14px; }
@@ -241,12 +241,8 @@ hide: true
     <p>Coding starts with tools, explore these tools and procedures with a click.</p>
   </blockquote>
 
-  <a href="https://github.com/Open-Coding-Society/student" class="badge" aria-label="GitHub Repository">
-    <img src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white" alt="GitHub">
-  </a>
-  <a href="https://open-coding-society.github.io/student" class="badge" aria-label="GitHub Pages">
-    <img src="https://img.shields.io/badge/GitHub%20Pages-327FC7?logo=github&logoColor=white" alt="GitHub Pages">
-  </a>
+  <a href="https://github.com/Open-Coding-Society/student" class="badge">GitHub</a>
+  <a href="https://open-coding-society.github.io/student" class="badge">GitHub Pages</a>
   <a href="https://kasm.opencodingsociety.com/" class="button small">KASM</a>
   <a href="https://vscode.dev/" class="button small">VSCODE</a>
 
