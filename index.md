@@ -5,7 +5,6 @@ hide: true
 ---
 
 <style>
-  /* ========= 全局与配色：柔和统一的粉蓝紫系 ========= */
   :root{
     --ink:#45455a;
     --ink-2:#5a5a77;
@@ -26,7 +25,6 @@ hide: true
     color: var(--ink);
     line-height: 1.65;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    /* 使用平滑的渐变动画，不再频繁切换纯色 */
     animation: bgCycle 28s ease-in-out infinite alternate;
     background-attachment: fixed;
   }
@@ -37,7 +35,6 @@ hide: true
     100% { background: radial-gradient(1200px 800px at 50% 80%, #E6F9FF 0%, #F8F0FF 60%, #FFF0F5 100%); }
   }
 
-  /* ========= 星星：更小更少更柔和 ========= */
   .star {
     position: fixed;
     width: 2px;
@@ -45,9 +42,8 @@ hide: true
     background: rgba(180, 180, 255, 0.75);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 1; /* 放在内容之后，避免遮挡点击 */
+    z-index: 1;
     animation: twinkle 2.2s infinite alternate ease-in-out, float 38s linear infinite;
-    will-change: transform, opacity;
   }
   @keyframes twinkle {
     0%   { opacity: .35; transform: scale(.6); }
@@ -58,13 +54,11 @@ hide: true
     100% { transform: translate(70vw, 70vh) rotate(360deg); }
   }
 
-  /* 用户若开启减少动效偏好，则停用动画 */
   @media (prefers-reduced-motion: reduce) {
     body { animation: none; }
     .star { animation: none; }
   }
 
-  /* ========= 排版 ========= */
   main {
     position: relative;
     z-index: 2;
@@ -88,7 +82,7 @@ hide: true
 
   p, li { color: var(--ink-2); }
 
-  /* ========= 表格 ========= */
+  /* 表格 */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -111,16 +105,15 @@ hide: true
   td {
     padding: 12px 14px;
     border-bottom: 1px solid #F0F0FF;
-    color: var(--ink);
+    color: #4e4e7a !important; /* 柔和蓝紫色 */
     transition: background-color .2s ease, color .2s ease;
   }
   tr:last-child td { border-bottom: none; }
   tr:hover td {
     background-color: rgba(200,200,255,0.06);
-    color: var(--primary);
+    color: var(--primary) !important;
   }
 
-  /* ========= 按钮 & 徽章 ========= */
   .button.small, .badge {
     display: inline-block;
     text-decoration: none;
@@ -155,7 +148,6 @@ hide: true
     background-color: rgba(200,200,255,0.3);
   }
 
-  /* ========= 链接 ========= */
   a {
     color: #7A6CEC !important;
     font-weight: 600;
@@ -164,7 +156,6 @@ hide: true
   }
   a:hover { color: #5E50D2 !important; text-decoration: underline; }
 
-  /* ========= 联系区块 ========= */
   #contact {
     background: var(--glass-bg);
     padding: 1.6rem;
@@ -175,7 +166,6 @@ hide: true
   }
   #contact p { color: var(--ink-2) !important; margin-bottom: .8rem; }
 
-  /* 让小屏也舒服 */
   @media (max-width: 640px) {
     main { margin: 20px auto; padding: 16px; border-radius: 14px; }
     th, td { padding: 10px 12px; }
@@ -183,15 +173,13 @@ hide: true
 </style>
 
 <script>
-  // ======== 创建更柔和的星星（数量更少，避免花） ========
   function createStars() {
-    const starsCount = 20; // 原来是 30，这里降到 20 更干净
+    const starsCount = 20;
     for (let i = 0; i < starsCount; i++) {
       const star = document.createElement('div');
       star.className = 'star';
       star.style.left = Math.random() * 100 + 'vw';
       star.style.top = Math.random() * 100 + 'vh';
-      // 速度与延迟拉长，显得更安静
       star.style.animationDuration = (Math.random() * 28 + 24) + 's';
       star.style.animationDelay = (Math.random() * 10) + 's';
       document.body.appendChild(star);
@@ -201,7 +189,6 @@ hide: true
 </script>
 
 <main>
-  <!-- ======== 正文：保留你的所有内容 ======== -->
   <h3>Me and Team</h3>
   <p>Hi! My name is Meryl.</p>
 
@@ -271,7 +258,6 @@ hide: true
 
   <br><br>
 
-  <!-- Contact Section -->
   <div id="contact">
     <h3>Get in Touch</h3>
     <blockquote>
