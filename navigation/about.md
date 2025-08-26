@@ -348,79 +348,94 @@ Here are my family members:
 </script>
 
 <!-- ============================================================
-     可爱蟑螂 v4 - 调低项圈位置，避免压到脸
+     可爱的蟑螂 
 =============================================================== -->
 <style>
-  .silly-roach-wrap {
+  .silly-roach-wrap{
     position: fixed;
     left: 20px;
     bottom: 20px;
     width: 120px;
     height: 180px;
     z-index: 9999;
+    pointer-events: none; /* 不遮挡页面点击；需要交互改成 auto */
   }
 
-  .silly-roach-svg {
+  .silly-roach-svg{
     width: 100%;
     height: 100%;
     transform-origin: 50% 90%;
     animation: roach-bounce 2s ease-in-out infinite;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));
   }
-  @keyframes roach-bounce {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-6px); }
+  @keyframes roach-bounce{
+    0%,100%{ transform: translateY(0); }
+    50%    { transform: translateY(-6px); }
   }
 
-  .roach-head {
+  /* 头部整体左右轻摆；触角放在头部组里，随头一起转 */
+  .roach-head{
     transform-origin: 60px 60px;
     animation: head-wobble 1.6s ease-in-out infinite;
   }
-  @keyframes head-wobble {
+  @keyframes head-wobble{
     0%   { transform: rotate(-4deg); }
     50%  { transform: rotate(4deg); }
     100% { transform: rotate(-4deg); }
   }
 
-  .roach-antenna {
+  /* 触角微微柔性（很小幅度），不脱离头部节奏 */
+  .roach-antenna{
     stroke: #222;
     stroke-width: 5;
     stroke-linecap: round;
     transform-origin: inherit;
     animation: antenna-flex 1.6s ease-in-out infinite;
   }
-  @keyframes antenna-flex {
-    0%,100% { transform: rotate(0deg); }
-    50%     { transform: rotate(3deg); }
+  @keyframes antenna-flex{
+    0%,100%{ transform: rotate(0deg); }
+    50%    { transform: rotate(3deg); }
   }
 
-  .bell-group {
-    transform-origin: 60px 96px; /* 调低挂点 */
+  /* 项圈+铃铛整组一起摆动 */
+  .bell-group{
+    transform-origin: 60px 96px; /* 挂点在项圈下沿附近 */
     animation: bell-swing 1.6s ease-in-out infinite;
   }
-  @keyframes bell-swing {
+  @keyframes bell-swing{
     0%   { transform: rotate(-6deg); }
     50%  { transform: rotate(6deg); }
     100% { transform: rotate(-6deg); }
   }
 
-  .collar-band {
-    fill: none;
+  /* 细项圈（前半圈） */
+  .collar-band{
     stroke: red;
     stroke-width: 4;
+    stroke-linecap: round;
+    fill: none;
   }
-  .roach-bell {
+
+  /* 铃铛配色 */
+  .roach-bell{
     fill: #ffd45c;
     stroke: #a87b1f;
     stroke-width: 2;
   }
-  .belly-patch { fill: #e7b994; opacity: .55; }
+
+  /* 肚皮淡色补丁 */
+  .belly-patch{
+    fill: #e7b994;
+    opacity: .55;
+  }
 </style>
 
-<div class="silly-roach-wrap">
+<div class="silly-roach-wrap" aria-hidden="true">
   <svg class="silly-roach-svg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
     <!-- 身体 -->
-    <ellipse cx="60" cy="102" rx="35" ry="56" fill="#a46b43" stroke="#222" stroke-width="6"/>
+    <ellipse cx="60" cy="102" rx="35" ry="56"
+             fill="#a46b43" stroke="#222" stroke-width="6"/>
+    <!-- 肚皮淡色补丁（更可爱） -->
     <ellipse class="belly-patch" cx="60" cy="118" rx="22" ry="30"/>
 
     <!-- 手 -->
@@ -430,22 +445,33 @@ Here are my family members:
     <line x1="48" y1="150" x2="48" y2="170" stroke="#222" stroke-width="6" stroke-linecap="round"/>
     <line x1="72" y1="150" x2="72" y2="170" stroke="#222" stroke-width="6" stroke-linecap="round"/>
 
-    <!-- 头 + 触角 -->
+    <!-- 头 + 触角（同组：一起摇） -->
     <g class="roach-head">
+      <!-- 触角 -->
       <line class="roach-antenna" x1="45" y1="28" x2="25" y2="8"/>
       <line class="roach-antenna" x1="75" y1="28" x2="95" y2="8"/>
+      <!-- 头 -->
       <ellipse cx="60" cy="60" rx="40" ry="34" fill="#c89062" stroke="#222" stroke-width="6"/>
+      <!-- 眼睛 -->
       <circle cx="45" cy="56" r="5" fill="#222"/>
       <circle cx="75" cy="56" r="5" fill="#222"/>
-      <path d="M50 70 Q60 80 70 70" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- 嘴（微笑） -->
+      <path d="M50 70 Q60 80 70 70"
+            stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
     </g>
 
-    <!-- 小项圈 + 铃铛（整体下移） -->
+    <!-- 项圈（只画前半圈）+ 铃铛（整组摇摆） -->
     <g class="bell-group">
-      <ellipse class="collar-band" cx="60" cy="92" rx="24" ry="5"/> <!-- 项圈位置调低 -->
-      <line x1="60" y1="95" x2="60" y2="102" stroke="#a87b1f" stroke-width="3" stroke-linecap="round"/>
+      <!-- 前半圈项圈：中心(60,92)，水平半径24，垂直半径10 -->
+      <path class="collar-band"
+            d="M 36 92 A 24 10 0 0 0 84 92"/>
+      <!-- 链接线（跟组摆动） -->
+      <line x1="60" y1="94" x2="60" y2="102"
+            stroke="#a87b1f" stroke-width="3" stroke-linecap="round"/>
+      <!-- 铃铛 -->
       <circle class="roach-bell" cx="60" cy="110" r="9"/>
-      <line x1="60" y1="110" x2="60" y2="114" stroke="#a87b1f" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="60" y1="110" x2="60" y2="114"
+            stroke="#a87b1f" stroke-width="2.5" stroke-linecap="round"/>
     </g>
   </svg>
 </div>
