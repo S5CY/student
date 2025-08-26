@@ -348,7 +348,7 @@ Here are my family members:
 </script>
 
 <!-- ============================================================
-     可爱的蟑螂 
+     Cute Roach (左下角) — 点击会跳一下
 =============================================================== -->
 <style>
   .silly-roach-wrap{
@@ -358,7 +358,7 @@ Here are my family members:
     width: 120px;
     height: 180px;
     z-index: 9999;
-    pointer-events: none; /* 不遮挡页面点击；需要交互改成 auto */
+    cursor: pointer; /* 鼠标变小手，提示可点 */
   }
 
   .silly-roach-svg{
@@ -373,7 +373,17 @@ Here are my family members:
     50%    { transform: translateY(-6px); }
   }
 
-  /* 头部整体左右轻摆；触角放在头部组里，随头一起转 */
+  /* 点击时触发的跳跃动画 */
+  .jumping{
+    animation: roach-jump 0.5s ease-out;
+  }
+  @keyframes roach-jump{
+    0%   { transform: translateY(0) scale(1); }
+    30%  { transform: translateY(-30px) scale(1.05); }
+    60%  { transform: translateY(0) scale(0.98); }
+    100% { transform: translateY(0) scale(1); }
+  }
+
   .roach-head{
     transform-origin: 60px 60px;
     animation: head-wobble 1.6s ease-in-out infinite;
@@ -384,7 +394,6 @@ Here are my family members:
     100% { transform: rotate(-4deg); }
   }
 
-  /* 触角微微柔性（很小幅度），不脱离头部节奏 */
   .roach-antenna{
     stroke: #222;
     stroke-width: 5;
@@ -397,9 +406,8 @@ Here are my family members:
     50%    { transform: rotate(3deg); }
   }
 
-  /* 项圈+铃铛整组一起摆动 */
   .bell-group{
-    transform-origin: 60px 96px; /* 挂点在项圈下沿附近 */
+    transform-origin: 60px 96px;
     animation: bell-swing 1.6s ease-in-out infinite;
   }
   @keyframes bell-swing{
@@ -408,34 +416,28 @@ Here are my family members:
     100% { transform: rotate(-6deg); }
   }
 
-  /* 细项圈（前半圈） */
   .collar-band{
     stroke: red;
     stroke-width: 4;
     stroke-linecap: round;
     fill: none;
   }
-
-  /* 铃铛配色 */
   .roach-bell{
     fill: #ffd45c;
     stroke: #a87b1f;
     stroke-width: 2;
   }
-
-  /* 肚皮淡色补丁 */
   .belly-patch{
     fill: #e7b994;
     opacity: .55;
   }
 </style>
 
-<div class="silly-roach-wrap" aria-hidden="true">
-  <svg class="silly-roach-svg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+<div class="silly-roach-wrap" id="roach">
+  <svg class="silly-roach-svg" id="roachSvg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
     <!-- 身体 -->
     <ellipse cx="60" cy="102" rx="35" ry="56"
              fill="#a46b43" stroke="#222" stroke-width="6"/>
-    <!-- 肚皮淡色补丁（更可爱） -->
     <ellipse class="belly-patch" cx="60" cy="118" rx="22" ry="30"/>
 
     <!-- 手 -->
@@ -445,33 +447,39 @@ Here are my family members:
     <line x1="48" y1="150" x2="48" y2="170" stroke="#222" stroke-width="6" stroke-linecap="round"/>
     <line x1="72" y1="150" x2="72" y2="170" stroke="#222" stroke-width="6" stroke-linecap="round"/>
 
-    <!-- 头 + 触角（同组：一起摇） -->
+    <!-- 头 + 触角 -->
     <g class="roach-head">
-      <!-- 触角 -->
       <line class="roach-antenna" x1="45" y1="28" x2="25" y2="8"/>
       <line class="roach-antenna" x1="75" y1="28" x2="95" y2="8"/>
-      <!-- 头 -->
       <ellipse cx="60" cy="60" rx="40" ry="34" fill="#c89062" stroke="#222" stroke-width="6"/>
-      <!-- 眼睛 -->
       <circle cx="45" cy="56" r="5" fill="#222"/>
       <circle cx="75" cy="56" r="5" fill="#222"/>
-      <!-- 嘴（微笑） -->
-      <path d="M50 70 Q60 80 70 70"
-            stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M50 70 Q60 80 70 70" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
     </g>
 
-    <!-- 项圈（只画前半圈）+ 铃铛（整组摇摆） -->
+    <!-- 项圈 + 铃铛 -->
     <g class="bell-group">
-      <!-- 前半圈项圈：中心(60,92)，水平半径24，垂直半径10 -->
       <path class="collar-band"
             d="M 36 92 A 24 10 0 0 0 84 92"/>
-      <!-- 链接线（跟组摆动） -->
       <line x1="60" y1="94" x2="60" y2="102"
             stroke="#a87b1f" stroke-width="3" stroke-linecap="round"/>
-      <!-- 铃铛 -->
       <circle class="roach-bell" cx="60" cy="110" r="9"/>
       <line x1="60" y1="110" x2="60" y2="114"
             stroke="#a87b1f" stroke-width="2.5" stroke-linecap="round"/>
     </g>
   </svg>
 </div>
+
+<script>
+  const roachSvg = document.getElementById("roachSvg");
+  const roach = document.getElementById("roach");
+
+  roach.addEventListener("click", () => {
+    // 移除已有类，强制重触发动画
+    roachSvg.classList.remove("jumping");
+    void roachSvg.offsetWidth; // 触发重绘
+    roachSvg.classList.add("jumping");
+    // 动画结束后恢复正常
+    setTimeout(()=> roachSvg.classList.remove("jumping"), 500);
+  });
+</script>
