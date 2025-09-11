@@ -59,7 +59,7 @@ permalink: /background
       }
     }
 
-    // Background object that scrolls infinitely
+    // Background object that goes on infinitely
     class Background extends GameObject {
       constructor(image, gameWorld) {
         // Fill the canvas with background image
