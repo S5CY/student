@@ -4,6 +4,8 @@ title: I'm Meryl Chen
 hide: true
 ---
 
+<style>
+  
 Hi! My name is Meryl Chen
 
   html, body {
