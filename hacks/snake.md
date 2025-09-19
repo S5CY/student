@@ -4,7 +4,6 @@ title: Snake Game
 permalink: /snake/
 ---
 
-
 <style>
     body { font-family: sans-serif; }
     .wrap { margin: auto; display: block; }
@@ -31,6 +30,12 @@ permalink: /snake/
     #setting input:checked + label {
         background-color: #FFF;
         color: #000;
+    }
+
+    /* Score animation */
+    #score_value {
+        display: inline-block;
+        transition: transform 0.2s ease;
     }
 </style>
 
@@ -102,6 +107,9 @@ permalink: /snake/
 
         updateScore() {
             this.scoreElem.textContent = this.score;
+            // Score pulse animation
+            this.scoreElem.style.transform = "scale(1.3)";
+            setTimeout(()=>this.scoreElem.style.transform = "scale(1)", 200);
         }
 
         addFood() {
@@ -164,14 +172,58 @@ permalink: /snake/
         }
 
         drawBlock(x, y, color="#fff") {
-            this.ctx.fillStyle = color;
+            // Snake body gradient
+            if (color === "#fff") {
+                let gradient = this.ctx.createLinearGradient(
+                    x*this.blockSize, y*this.blockSize,
+                    (x+1)*this.blockSize, (y+1)*this.blockSize
+                );
+                gradient.addColorStop(0, "#4CAF50");
+                gradient.addColorStop(1, "#2E7D32");
+                this.ctx.fillStyle = gradient;
+            } else {
+                this.ctx.fillStyle = color;
+            }
             this.ctx.fillRect(x*this.blockSize, y*this.blockSize, this.blockSize, this.blockSize);
+
+            // Food glow effect
+            if (color === "#f00") {
+                this.ctx.shadowColor = "red";
+                this.ctx.shadowBlur = 10;
+                this.ctx.fillRect(x*this.blockSize, y*this.blockSize, this.blockSize, this.blockSize);
+                this.ctx.shadowBlur = 0;
+            }
         }
 
         render() {
-            this.ctx.fillStyle = "royalblue";
+            // Dark background
+            this.ctx.fillStyle = "#1E1E2F";
             this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-            this.snake.forEach(p => this.drawBlock(p.x, p.y));
+
+            // Grid lines
+            this.ctx.strokeStyle = "#2E2E3F";
+            for (let x=0; x<this.canvas.width; x+=this.blockSize) {
+                this.ctx.beginPath();
+                this.ctx.moveTo(x, 0);
+                this.ctx.lineTo(x, this.canvas.height);
+                this.ctx.stroke();
+            }
+            for (let y=0; y<this.canvas.height; y+=this.blockSize) {
+                this.ctx.beginPath();
+                this.ctx.moveTo(0, y);
+                this.ctx.lineTo(this.canvas.width, y);
+                this.ctx.stroke();
+            }
+
+            // Snake with golden head
+            this.snake.forEach((p, i) => {
+                if (i === 0) {
+                    this.drawBlock(p.x, p.y, "#FFD700"); // head
+                } else {
+                    this.drawBlock(p.x, p.y);
+                }
+            });
+            // Food
             this.drawBlock(this.food.x, this.food.y, "#f00");
         }
 
